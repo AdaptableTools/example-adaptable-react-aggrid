@@ -1,9 +1,9 @@
 import * as React from "react";
 
-// import the blotter and types
+// import adaptable and types
 import AdaptableReact from "@adaptabletools/adaptable-react-aggrid";
 
-// import blotter css and themes
+// import adaptable css and themes
 import "@adaptabletools/adaptable-react-aggrid/base.css";
 import "@adaptabletools/adaptable-react-aggrid/themes/light.css";
 import "@adaptabletools/adaptable-react-aggrid/themes/dark.css";
@@ -69,14 +69,14 @@ const gridOptions = {
 };
 
 // build the IAdaptableOptions object
-// in this example we are NOT passing in predefined config but in the real world you will ship the Blotter with objects and permissions
+// in this example we are NOT passing in predefined config but in the real world you will ship the AdapTable with objects and permissions
 const adaptableOptions = {
   primaryKey: "id",
   userName: "sandbox user",
-  adaptableId: "blotter react demo"
+  adaptableId: "adaptable react demo"
 };
 
-// Create the Adaptable Blotter by using the AdaptableBlotterReact component
+// Create the AdapTable by using the AdapTableReact component
 const App: React.FC = () => (
   <AdaptableReact
     style={{ height: "100vh" }}
