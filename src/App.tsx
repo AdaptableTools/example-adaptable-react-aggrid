@@ -1,7 +1,9 @@
 import * as React from "react";
 
 // import adaptable and types
-import AdaptableReact from "@adaptabletools/adaptable-react-aggrid";
+import AdaptableReact, {
+  AdaptableOptions
+} from "@adaptabletools/adaptable-react-aggrid";
 
 // import adaptable css and themes
 import "@adaptabletools/adaptable-react-aggrid/base.css";
@@ -70,10 +72,11 @@ const gridOptions = {
 
 // build the IAdaptableOptions object
 // in this example we are NOT passing in predefined config but in the real world you will ship the AdapTable with objects and permissions
-const adaptableOptions = {
+const adaptableOptions: AdaptableOptions = {
   primaryKey: "id",
   userName: "sandbox user",
-  adaptableId: "adaptable react demo"
+  adaptableId: "adaptable react demo",
+  predefinedConfig: {}
 };
 
 // Create the AdapTable by using the AdapTableReact component
