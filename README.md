@@ -11,5 +11,5 @@ Run `npm install` (or `yarn`), depending on what tool you're using.
 Execute the following command
 
 ```sh
-$ npm run dev
+$ npm run start
 ```
