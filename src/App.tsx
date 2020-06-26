@@ -90,7 +90,7 @@ const gridOptions: GridOptions = {
   },
 };
 
-// build the IAdaptableOptions object
+// build the AdaptableOptions object
 // in this example we are NOT passing in predefined config but in the real world you will ship the AdapTable with objects and permissions
 const adaptableOptions: AdaptableOptions = {
   primaryKey: "id",
@@ -102,7 +102,7 @@ const adaptableOptions: AdaptableOptions = {
   },
 };
 
-// Create the AdapTable by using the AdapTableReact component
+// Create the AdapTable inastance by using the AdapTableReact component
 const App: React.FC = () => (
   <div style={{ display: "flex", flexFlow: "column", height: "100vh" }}>
     <AdaptableReact
