@@ -2,8 +2,12 @@ import * as React from "react";
 
 // import adaptable and types
 import AdaptableReact, {
-  AdaptableOptions
+  AdaptableOptions,
 } from "@adaptabletools/adaptable-react-aggrid";
+
+import { AdaptableToolPanelAgGridComponent } from "@adaptabletools/adaptable/src/AdaptableComponents";
+
+import { AgGridReact } from "@ag-grid-community/react";
 
 // import adaptable css and themes
 import "@adaptabletools/adaptable-react-aggrid/base.css";
@@ -12,10 +16,16 @@ import "@adaptabletools/adaptable-react-aggrid/themes/dark.css";
 
 // import aggrid themes
 import "@ag-grid-community/all-modules/dist/styles/ag-grid.css";
+import "@ag-grid-community/all-modules/dist/styles/ag-theme-alpine.css";
 import "@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css";
+import "@ag-grid-community/all-modules/dist/styles/ag-theme-alpine-dark.css";
 import "@ag-grid-community/all-modules/dist/styles/ag-theme-balham-dark.css";
 
-import { AllEnterpriseModules } from "@ag-grid-enterprise/all-modules";
+import {
+  AllEnterpriseModules,
+  GridOptions,
+  ClientSideRowModelModule,
+} from "@ag-grid-enterprise/all-modules";
 
 // create ag-Grid Column Definitions
 const columnDefs = [
@@ -25,7 +35,7 @@ const columnDefs = [
     editable: true,
     filter: true,
     sortable: true,
-    type: "abColDefString"
+    type: "abColDefString",
   },
   {
     headerName: "Model",
@@ -33,7 +43,7 @@ const columnDefs = [
     editable: true,
     filter: true,
     sortable: true,
-    type: "abColDefString"
+    type: "abColDefString",
   },
   {
     headerName: "Price",
@@ -41,33 +51,43 @@ const columnDefs = [
     editable: true,
     filter: true,
     sortable: true,
-    type: "abColDefNumber"
-  }
+    type: "abColDefNumber",
+  },
 ];
 // some dummy data
 const rowData = [
   { id: 1, make: "Toyota", model: "Celica", price: 35000 },
   { id: 2, make: "Ford", model: "Mondeo", price: 32000 },
   { id: 3, make: "Ford", model: "Fiesta", price: 22000 },
-  { id: 4, make: "Porsche", model: "Boxter", price: 72000 }
+  { id: 4, make: "Porsche", model: "Boxter", price: 72000 },
 ];
 
 // let ag-grid know which columns and what data to use and add some other properties
-const gridOptions = {
+const gridOptions: GridOptions = {
   columnDefs: columnDefs,
   rowData: rowData,
-  enableRangeSelection: true,
+  components: {
+    AdaptableToolPanel: AdaptableToolPanelAgGridComponent,
+  },
+  // enableRangeSelection: true,
+
   floatingFilter: true,
   sideBar: true,
   suppressMenuHide: true,
+
+  // rowSelection: "multiple",
+  onSelectionChanged: (...args) => {
+    console.log("!!!!", args);
+  },
+
   columnTypes: {
     // not required but helpful for column data type identification
     abColDefNumber: {},
     abColDefString: {},
     abColDefBoolean: {},
     abColDefDate: {},
-    abColDefObject: {}
-  }
+    abColDefObject: {},
+  },
 };
 
 // build the IAdaptableOptions object
@@ -76,17 +96,33 @@ const adaptableOptions: AdaptableOptions = {
   primaryKey: "id",
   userName: "sandbox user",
   adaptableId: "adaptable react demo",
-  predefinedConfig: {}
+  predefinedConfig: {},
+  userInterfaceOptions: {
+    showAdaptableToolPanel: true,
+  },
 };
 
 // Create the AdapTable by using the AdapTableReact component
 const App: React.FC = () => (
-  <AdaptableReact
-    style={{ height: "100vh" }}
-    gridOptions={gridOptions}
-    adaptableOptions={adaptableOptions}
-    modules={AllEnterpriseModules}
-  />
+  <div style={{ display: "flex", flexFlow: "column", height: "100vh" }}>
+    <AdaptableReact
+      style={{ flex: "none" }}
+      gridOptions={gridOptions}
+      adaptableOptions={adaptableOptions}
+      onAdaptableReady={({ adaptableApi }) => {
+        console.log("ready!!!!");
+        adaptableApi.eventApi.on("SelectionChanged", (args) => {
+          console.warn(args);
+        });
+      }}
+    />
+    <div className="ag-theme-alpine" style={{ flex: 1 }}>
+      <AgGridReact
+        gridOptions={gridOptions}
+        modules={[...AllEnterpriseModules, ClientSideRowModelModule]}
+      />
+    </div>
+  </div>
 );
 
 export default App;
