@@ -1,12 +1,13 @@
 import * as React from "react";
 
-// import adaptable and types
+// import Adaptable Component and other types
 import AdaptableReact, {
   AdaptableOptions,
 } from "@adaptabletools/adaptable-react-aggrid";
 
 import { AdaptableToolPanelAgGridComponent } from "@adaptabletools/adaptable/src/AdaptableComponents";
 
+// import agGrid Component
 import { AgGridReact } from "@ag-grid-community/react";
 
 // import adaptable css and themes
@@ -14,12 +15,10 @@ import "@adaptabletools/adaptable-react-aggrid/base.css";
 import "@adaptabletools/adaptable-react-aggrid/themes/light.css";
 import "@adaptabletools/adaptable-react-aggrid/themes/dark.css";
 
-// import aggrid themes
+// import aggrid themes (using new Balham theme)
 import "@ag-grid-community/all-modules/dist/styles/ag-grid.css";
 import "@ag-grid-community/all-modules/dist/styles/ag-theme-alpine.css";
-import "@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css";
 import "@ag-grid-community/all-modules/dist/styles/ag-theme-alpine-dark.css";
-import "@ag-grid-community/all-modules/dist/styles/ag-theme-balham-dark.css";
 
 import {
   AllEnterpriseModules,
@@ -69,13 +68,8 @@ const gridOptions: GridOptions = {
   components: {
     AdaptableToolPanel: AdaptableToolPanelAgGridComponent,
   },
-  // enableRangeSelection: true,
-
-  floatingFilter: true,
   sideBar: true,
   suppressMenuHide: true,
-
-  // rowSelection: "multiple",
   onSelectionChanged: (...args) => {
     console.log("!!!!", args);
   },
@@ -103,6 +97,8 @@ const adaptableOptions: AdaptableOptions = {
 };
 
 // Create the AdapTable inastance by using the AdapTableReact component
+// And also create the ag-Grid instance by using the AgGridReact component
+// NOTE: we pass the SAME gridOptions object into both
 const App: React.FC = () => (
   <div style={{ display: "flex", flexFlow: "column", height: "100vh" }}>
     <AdaptableReact
