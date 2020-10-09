@@ -70,6 +70,7 @@ const gridOptions: GridOptions = {
   },
   sideBar: true,
   suppressMenuHide: true,
+  enableRangeSelection: true,
   onSelectionChanged: (...args) => {
     console.log("!!!!", args);
   },
