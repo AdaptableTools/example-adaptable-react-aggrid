@@ -26,7 +26,6 @@ import {
   ClientSideRowModelModule,
 } from "@ag-grid-enterprise/all-modules";
 
-
 import finance from "@adaptabletools/adaptable-plugin-finance";
 
 // create ag-Grid Column Definitions
@@ -98,7 +97,7 @@ const adaptableOptions: AdaptableOptions = {
   userInterfaceOptions: {
     showAdaptableToolPanel: true,
   },
-  plugins:[finance()],
+  plugins: [finance()],
 };
 
 // Create the AdapTable inastance by using the AdapTableReact component
