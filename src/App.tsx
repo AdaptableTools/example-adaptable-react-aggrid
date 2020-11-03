@@ -26,8 +26,6 @@ import {
   ClientSideRowModelModule,
 } from "@ag-grid-enterprise/all-modules";
 
-import finance from "@adaptabletools/adaptable-plugin-finance";
-
 // create ag-Grid Column Definitions
 const columnDefs = [
   {
@@ -64,7 +62,7 @@ const rowData = [
 ];
 
 // let ag-grid know which columns and what data to use and add some other properties
-const gridOptions: GridOptions = {
+const baseGridOptions: GridOptions = {
   columnDefs: columnDefs,
   rowData: rowData,
   components: {
@@ -73,9 +71,6 @@ const gridOptions: GridOptions = {
   sideBar: true,
   suppressMenuHide: true,
   enableRangeSelection: true,
-  onSelectionChanged: (...args) => {
-    console.log("!!!!", args);
-  },
 
   columnTypes: {
     // not required but helpful for column data type identification
@@ -93,36 +88,71 @@ const adaptableOptions: AdaptableOptions = {
   primaryKey: "id",
   userName: "sandbox user",
   adaptableId: "adaptable react demo",
-  predefinedConfig: {},
+  adaptableStateKey: "rerender demo.",
+  userFunctions: [],
   userInterfaceOptions: {
     showAdaptableToolPanel: true,
   },
-  plugins: [finance()],
+  predefinedConfig: {
+    Layout: {
+      Layouts: [
+        {
+          Name: "default",
+          Columns: ["make", "model", "price", "price10"],
+        },
+      ],
+    },
+    CalculatedColumn: {
+      CalculatedColumns: [
+        {
+          ColumnExpression: "[price] * 10",
+          ColumnId: "price10",
+          FriendlyName: "Price 10",
+        },
+      ],
+    },
+  },
 };
 
 // Create the AdapTable inastance by using the AdapTableReact component
 // And also create the ag-Grid instance by using the AgGridReact component
 // NOTE: we pass the SAME gridOptions object into both
-const App: React.FC = () => (
-  <div style={{ display: "flex", flexFlow: "column", height: "100vh" }}>
-    <AdaptableReact
-      style={{ flex: "none" }}
-      gridOptions={gridOptions}
-      adaptableOptions={adaptableOptions}
-      onAdaptableReady={({ adaptableApi }) => {
-        console.log("ready!!!!");
-        adaptableApi.eventApi.on("SelectionChanged", (args) => {
-          console.warn(args);
-        });
-      }}
-    />
-    <div className="ag-theme-alpine" style={{ flex: 1 }}>
-      <AgGridReact
+const App: React.FC = () => {
+  const [key, setKey] = React.useState(1);
+
+  const gridOptions = React.useMemo(() => {
+    return { ...baseGridOptions };
+  }, [key]);
+
+  return (
+    <div
+      style={{ display: "flex", flexFlow: "column", height: "100vh" }}
+      key={key}
+    >
+      <button onClick={() => setKey((key) => key + 1)}>
+        rerender - current key: {key}
+      </button>
+      <AdaptableReact
+        key={key}
+        style={{ flex: "none" }}
         gridOptions={gridOptions}
-        modules={[...AllEnterpriseModules, ClientSideRowModelModule]}
+        adaptableOptions={{ ...adaptableOptions, adaptableId: `Key: ${key}` }}
+        onAdaptableReady={({ adaptableApi, vendorGrid }) => {
+          (global as any).adaptableApi = adaptableApi;
+          (global as any).gridOptions = gridOptions;
+          (global as any).vendorGrid = vendorGrid;
+          console.log("ready!!!!");
+        }}
       />
+      <div className="ag-theme-alpine" style={{ flex: 1 }}>
+        <AgGridReact
+          key={key}
+          gridOptions={gridOptions}
+          modules={[...AllEnterpriseModules, ClientSideRowModelModule]}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default App;
