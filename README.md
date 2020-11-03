@@ -39,9 +39,7 @@ To see AdapTable in action visit our [Demo Site](https://demo.adaptabletools.com
 
 ## Help
 
-Developers can learn how to access AdapTable programmatically at [AdapTable Developer Documentation](https://api.adaptabletools.com) 
-
-The other source for Help is our collection of 'Read Me' Docs ([full list here](https://github.com/AdaptableTools/adaptable/blob/master/packages/adaptable/readme/readme-list.md)).
+Developers can learn how to access AdapTable programmatically at [AdapTable Documentation](https://docs.adaptabletools.com).
 
 ## More Information
 
