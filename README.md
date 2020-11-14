@@ -5,7 +5,7 @@ This is a very basic example of how to install and get started with the Adaptabl
 
 It uses v.7 of AdapTable and v.23 of ag-Grid
 
-For full information on how to use the AdapTable React Wrapper see the package [Read Me](https://github.com/AdaptableTools/adaptable/blob/master/packages/adaptable-react-aggrid/README.md).
+For full information on how to use the AdapTable React Wrapper see the [AdapTable Documentation](https://docs.adaptabletools.com/docs/react-wrapper/react-wrapper-overview).
 
 ### Installation
 
