@@ -1,9 +1,10 @@
 # example-adaptable-react-aggrid
 
 ## React Wrapper Example
+
 This is a very basic example of how to install and get started with the Adaptable React Wrapper.
 
-It uses v.7 of AdapTable and v.23 of ag-Grid
+It uses v.7.1 of AdapTable and v.24 of ag-Grid
 
 For full information on how to use the AdapTable React Wrapper see the [AdapTable Documentation](https://docs.adaptabletools.com/docs/react-wrapper/react-wrapper-overview).
 
@@ -24,6 +25,7 @@ $ npm run start
 ```
 
 ## Licences
+
 A licence for AdapTable provides access to all product features as well as quarterly updates and enhancements through the lifetime of the licence, comprehensive support, and access to all 3rd party libraries.
 
 Licences can be purchased individually, for a team (minimum 30 end-users), for an organisation or for integration into software for onward sale.
@@ -32,10 +34,9 @@ We can make a trial licence available for a short period of time to allow you to
 
 Please contact [`sales@adaptabletools.com`](mailto:sales@adaptabletools.com) for more information.
 
- 
 ## Demo
 
-To see AdapTable in action visit our [Demo Site](https://demo.adaptabletools.com).  Here you can see a large number of AdapTable demos each showing a different feature, function or option in AdapTable (using dummy data sets).
+To see AdapTable in action visit our [Demo Site](https://demo.adaptabletools.com). Here you can see a large number of AdapTable demos each showing a different feature, function or option in AdapTable (using dummy data sets).
 
 ## Help
 
@@ -43,8 +44,8 @@ Developers can learn how to access AdapTable programmatically at [AdapTable Docu
 
 ## More Information
 
-General information about Adaptable Tools is available at our [Website](http://www.adaptabletools.com) 
- 
+General information about Adaptable Tools is available at our [Website](http://www.adaptabletools.com)
+
 ## Support
 
 For all support enquiries please email [`support@adaptabletools.com`](mailto:support@adaptabletools.com) or [raise a Support Ticket](https://adaptabletools.zendesk.com/hc/en-us/requests/new).
