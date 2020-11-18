@@ -100,6 +100,8 @@ const adaptableOptions: AdaptableOptions = {
   plugins: [finance()],
 };
 
+const modules = [...AllEnterpriseModules, ClientSideRowModelModule];
+
 // Create the AdapTable inastance by using the AdapTableReact component
 // And also create the ag-Grid instance by using the AgGridReact component
 // NOTE: we pass the SAME gridOptions object into both
@@ -115,12 +117,10 @@ const App: React.FC = () => (
           console.warn(args);
         });
       }}
+      modules={modules}
     />
     <div className="ag-theme-alpine" style={{ flex: 1 }}>
-      <AgGridReact
-        gridOptions={gridOptions}
-        modules={[...AllEnterpriseModules, ClientSideRowModelModule]}
-      />
+      <AgGridReact gridOptions={gridOptions} modules={modules} />
     </div>
   </div>
 );
