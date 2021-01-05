@@ -76,15 +76,6 @@ const gridOptions: GridOptions = {
   onSelectionChanged: (...args) => {
     console.log("!!!!", args);
   },
-
-  columnTypes: {
-    // not required but helpful for column data type identification
-    abColDefNumber: {},
-    abColDefString: {},
-    abColDefBoolean: {},
-    abColDefDate: {},
-    abColDefObject: {},
-  },
 };
 
 // build the AdaptableOptions object
