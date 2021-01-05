@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@adaptabletools/adaptable-plugin-finance": "7.2.0",
-    "@adaptabletools/adaptable-plugin-ipushpull": "7.2.0",
-    "@adaptabletools/adaptable-react-aggrid": "7.2.0",
+    "@adaptabletools/adaptable-plugin-finance": "7.3.0",
+    "@adaptabletools/adaptable-plugin-ipushpull": "7.3.0",
+    "@adaptabletools/adaptable-react-aggrid": "7.3.0",
     "@ag-grid-community/all-modules": "^24.1.0",
     "@ag-grid-community/react": "^24.1.0",
     "@ag-grid-enterprise/all-modules": "^24.1.0",
