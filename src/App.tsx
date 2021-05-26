@@ -54,13 +54,20 @@ const columnDefs = [
     sortable: true,
     type: "abColDefNumber",
   },
+  {
+    headerName: "Date manufactured",
+    field: "date",
+    type: "abColDefDate",
+    filter: true,
+    floatingFilter: true,
+  },
 ];
 // some dummy data
 const rowData = [
-  { id: 1, make: "Toyota", model: "Celica", price: 35000 },
-  { id: 2, make: "Ford", model: "Mondeo", price: 32000 },
-  { id: 3, make: "Ford", model: "Fiesta", price: 22000 },
-  { id: 4, make: "Porsche", model: "Boxter", price: 72000 },
+  { id: 1, make: "Toyota", model: "Celica", price: 35000, date: "2010-01-02" },
+  { id: 2, make: "Ford", model: "Mondeo", price: 32000, date: "2012-01-02" },
+  { id: 3, make: "Ford", model: "Fiesta", price: 22000, date: "2014-01-02" },
+  { id: 4, make: "Porsche", model: "Boxter", price: 72000, date: "2016-01-02" },
 ];
 
 // let ag-grid know which columns and what data to use and add some other properties
@@ -83,7 +90,7 @@ const gridOptions: GridOptions = {
 const adaptableOptions: AdaptableOptions = {
   primaryKey: "id",
   userName: "sandbox user",
-  adaptableId: "adaptable react demo",
+  adaptableId: "adaptable react demo1",
   predefinedConfig: {},
   userInterfaceOptions: {
     showAdaptableToolPanel: true,
