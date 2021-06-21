@@ -4,7 +4,7 @@
 
 This is a very basic example of how to install and get started with the Adaptable React Wrapper.
 
-It uses v.7.1 of AdapTable and v.24 of ag-Grid
+It uses v.9 of AdapTable and v.25.3 of ag-Grid
 
 For full information on how to use the AdapTable React Wrapper see the [AdapTable Documentation](https://docs.adaptabletools.com/docs/react-wrapper/react-wrapper-overview).
 
@@ -27,8 +27,6 @@ $ npm run start
 ## Licences
 
 A licence for AdapTable provides access to all product features as well as quarterly updates and enhancements through the lifetime of the licence, comprehensive support, and access to all 3rd party libraries.
-
-Licences can be purchased individually, for a team (minimum 30 end-users), for an organisation or for integration into software for onward sale.
 
 We can make a trial licence available for a short period of time to allow you to try out AdapTable for yourself.
 
