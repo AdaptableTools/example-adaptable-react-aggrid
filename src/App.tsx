@@ -2,6 +2,7 @@ import * as React from "react";
 
 // import Adaptable Component and other types
 import AdaptableReact, {
+  AdaptableApi,
   AdaptableOptions,
 } from "@adaptabletools/adaptable-react-aggrid";
 
@@ -27,7 +28,25 @@ import {
 } from "@ag-grid-enterprise/all-modules";
 
 import finance from "@adaptabletools/adaptable-plugin-finance";
+import { useRef, useState } from "react";
 
+const QuickSearchCustomComponent = (props: any) => {
+  const [searchText, setSearchText] = useState("");
+  return (
+    <div>
+      CUSTOM QuickSearch
+      <input
+        value={searchText}
+        style={{ padding: "6px 10px", marginLeft: 5 }}
+        onChange={(event) => {
+          const value = event.target.value;
+          setSearchText(value);
+          props.onSearchTextChange(value);
+        }}
+      />
+    </div>
+  );
+};
 // create ag-Grid Column Definitions
 const columnDefs = [
   {
@@ -81,7 +100,7 @@ const gridOptions: GridOptions = {
   suppressMenuHide: true,
   enableRangeSelection: true,
   onSelectionChanged: (...args) => {
-    console.log("!!!!", args);
+    // console.log("!!!!", args);
   },
 };
 
@@ -90,8 +109,35 @@ const gridOptions: GridOptions = {
 const adaptableOptions: AdaptableOptions = {
   primaryKey: "id",
   userName: "sandbox user",
-  adaptableId: "adaptable react demo1",
-  predefinedConfig: {},
+  adaptableId: "adaptable react demo",
+  dashboardOptions: {
+    customToolbars: [
+      {
+        name: "CustomQuickSearch",
+        title: "Custom Quick Search",
+        frameworkComponent: ({ adaptableApi }) => {
+          return (
+            <QuickSearchCustomComponent
+              onSearchTextChange={(searchText: string) => {
+                adaptableApi.quickSearchApi.runQuickSearch(searchText);
+              }}
+            />
+          );
+        },
+      },
+    ],
+  },
+  predefinedConfig: {
+    Dashboard: {
+      Revision: 10,
+      Tabs: [
+        {
+          Name: "Welcome",
+          Toolbars: ["Alert", "CustomQuickSearch"],
+        },
+      ],
+    },
+  },
   userInterfaceOptions: {
     showAdaptableToolPanel: true,
   },
@@ -103,24 +149,26 @@ const modules = [...AllEnterpriseModules, ClientSideRowModelModule];
 // Create the AdapTable inastance by using the AdapTableReact component
 // And also create the ag-Grid instance by using the AgGridReact component
 // NOTE: we pass the SAME gridOptions object into both
-const App: React.FC = () => (
-  <div style={{ display: "flex", flexFlow: "column", height: "100vh" }}>
-    <AdaptableReact
-      style={{ flex: "none" }}
-      gridOptions={gridOptions}
-      adaptableOptions={adaptableOptions}
-      onAdaptableReady={({ adaptableApi }) => {
-        console.log("ready!!!!");
-        adaptableApi.eventApi.on("SelectionChanged", (args) => {
-          console.warn(args);
-        });
-      }}
-      modules={modules}
-    />
-    <div className="ag-theme-alpine" style={{ flex: 1 }}>
-      <AgGridReact gridOptions={gridOptions} modules={modules} />
+const App: React.FC = () => {
+  return (
+    <div style={{ display: "flex", flexFlow: "column", height: "100vh" }}>
+      <AdaptableReact
+        style={{ flex: "none" }}
+        gridOptions={gridOptions}
+        adaptableOptions={adaptableOptions}
+        onAdaptableReady={({ adaptableApi }) => {
+          console.log("ready!!!");
+          adaptableApi.eventApi.on("SelectionChanged", (args) => {
+            console.warn(args);
+          });
+        }}
+        modules={modules}
+      />
+      <div className="ag-theme-alpine" style={{ flex: 1 }}>
+        <AgGridReact gridOptions={gridOptions} modules={modules} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default App;
