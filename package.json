@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@adaptabletools/adaptable-plugin-finance": "^9.0.0-canary.44",
-    "@adaptabletools/adaptable-plugin-ipushpull": "^9.0.0-canary.44",
-    "@adaptabletools/adaptable-react-aggrid": "^9.0.0-canary.44",
+    "@adaptabletools/adaptable-plugin-finance": "^9.0.0",
+    "@adaptabletools/adaptable-plugin-ipushpull": "^9.0.0",
+    "@adaptabletools/adaptable-react-aggrid": "^9.0.0",
     "@ag-grid-community/all-modules": "^25.3.0",
     "@ag-grid-community/react": "^25.3.0",
     "@ag-grid-enterprise/all-modules": "^25.3.0",
