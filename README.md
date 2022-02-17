@@ -1,12 +1,12 @@
 # example-adaptable-react-aggrid
 
-## React Wrapper Example
+## AdapTable React Example
 
-This is a very basic example of how to install and get started with the [AdapTable React Wrapper](https://docs.adaptabletools.com/docs/react-wrapper/react-wrapper-overview).
+This is a very basic example of how to install and get started with [AdapTable React](https://docs.adaptabletools.com/docs/react-wrapper/react-wrapper-overview).
 
 It uses v.10 of [Adaptable](https://docs.adaptabletools.com/) and v.26.0 of [AG Grid](https://www.ag-grid.com).
 
-For full information on how to use the AdapTable React Wrapper see the [AdapTable Documentation](https://docs.adaptabletools.com/docs/react-wrapper/react-wrapper-overview).
+For full information on how to use AdapTable React see the [AdapTable Documentation](https://docs.adaptabletools.com/docs/react-wrapper/react-wrapper-overview).
 
 ### Installation
 
