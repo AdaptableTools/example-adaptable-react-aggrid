@@ -30,13 +30,13 @@ Please contact [`sales@adaptabletools.com`](mailto:sales@adaptabletools.com) or 
 
 ## Demo
 
-To see AdapTable in action visit our [Demo Site](https://demo.adaptabletools.com). Here you can see a large number of AdapTable demos each showing a different feature, function or option in AdapTable (using dummy data sets).
+To see AdapTable in action visit [Adaptable Documentation](https://docs.adaptabletools.com/) which contains a large number of small demos each showing a different feature, function or option in AdapTable (using dummy data sets).
+
+Additionally, there is a page with larger 'recipe-type' Demos at the [Adaptable Tools website](https://www.adaptabletools.com/demos).
 
 ## Help
 
 Developers can learn how to access AdapTable programmatically at [AdapTable Documentation](https://docs.adaptabletools.com).
-
-## More Information
 
 General information about Adaptable Tools is available at our [Website](http://www.adaptabletools.com)
 
