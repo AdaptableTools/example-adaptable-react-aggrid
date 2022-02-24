@@ -4,7 +4,7 @@
 
 This is a very basic example of how to install and get started with [AdapTable React](https://docs.adaptabletools.com/learn/react-installation).
 
-It uses v.10 of [Adaptable](https://docs.adaptabletools.com/) and v.26.0 of [AG Grid](https://www.ag-grid.com).
+It uses v.11 of [Adaptable](https://docs.adaptabletools.com/) and v.27.0 of [AG Grid](https://www.ag-grid.com).
 
 For full information on how to use AdapTable React see the [AdapTable Documentation](https://docs.adaptabletools.com/learn/react-overview).
 
