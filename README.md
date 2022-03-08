@@ -1,12 +1,94 @@
 # example-adaptable-react-aggrid
 
+## Versions and Dependencies
+
+The demo is built using these key packages:
+
+- [React](https://github.com/facebook/react) version 16.x
+- [Adaptable](https://docs.adaptabletools.com/) version 11.x
+- [AG Grid](https://www.ag-grid.com) version 27.x
+
 ## AdapTable React Example
 
-This is a very basic example of how to install and get started with [AdapTable React](https://docs.adaptabletools.com/learn/react-installation).
+For full information on how to install and use AdapTable React see the [AdapTable Documentation](https://docs.adaptabletools.com/learn/react-overview).
 
-It uses v.11 of [Adaptable](https://docs.adaptabletools.com/) and v.27.0 of [AG Grid](https://www.ag-grid.com).
+This is a very basic example which showcases the React specific features of Adaptable:
 
-For full information on how to use AdapTable React see the [AdapTable Documentation](https://docs.adaptabletools.com/learn/react-overview).
+1. Passing of custom React components to the [Settings Panel](https://docs.adaptabletools.com/learn/ui-settings-panel) section:
+
+```ts
+const adaptableOptions: AdaptableOptions = {
+    // ...
+    settingsPanelOptions: {
+        customSettingsPanels: [
+            {
+                // CUSTOM SETTINGS PANEL COMPONENT
+                frameworkComponent: CustomSettingsPanel,
+                name: 'Custom Settings',
+            }
+        ]
+    }
+    // ...
+}
+```
+
+2. Passing of custom React components to the [Tool Panel](https://docs.adaptabletools.com/learn/ui-tool-panel) section:
+
+```tsx
+const adaptableOptions: AdaptableOptions = {
+    // ...
+    toolPanelOptions: {
+        toolPanelOrder: ['adaptable', 'columns', 'filters'],
+        customToolPanels: [
+            {
+                // CUSTOM TOOLPANEL COMPONENT
+                // wraps a reusable React component (same component is used in a custom toolbar)
+                name: 'CustomQuickSearch',
+                title: 'Custom Quick Search',
+                frameworkComponent: ({ adaptableApi }) => {
+                    return (
+                        <QuickSearchCustomComponent
+                            onSearchTextChange={(searchText: string) => {
+                        adaptableApi.quickSearchApi.runQuickSearch(searchText);
+                    }}
+                    />
+                );
+                },
+            }]
+    }
+    // ...
+}
+```
+
+3. Passing of custom React components to the [Dashboard Toolbar](https://docs.adaptabletools.com/learn/ui-dashboard#tabs-and-toolbars) section:
+
+```tsx
+const adaptableOptions: AdaptableOptions = {
+    // ...
+    dashboardOptions: {
+        customToolbars: [
+            {
+                // CUSTOM TOOLBAR COMPONENT
+                // wraps a reusable React component (same component is used in a custom tool panel)
+                name: 'CustomQuickSearch',
+                title: 'Custom Quick Search',
+                frameworkComponent: ({ adaptableApi }) => {
+                    return (
+                        <QuickSearchCustomComponent
+                            onSearchTextChange={(searchText: string) => {
+                                adaptableApi.quickSearchApi.runQuickSearch(searchText);
+                            }}
+                        />
+                    );
+                },
+            },
+        ],
+    }
+    // ...
+}
+```
+
+> For more information on how to use React Components in AdapTable see the [AdapTable Documentation](https://docs.adaptabletools.com/learn/react-custom-components).
 
 ### Installation
 

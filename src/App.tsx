@@ -19,7 +19,7 @@ import '@adaptabletools/adaptable-react-aggrid/base.css';
 import '@adaptabletools/adaptable-react-aggrid/themes/light.css';
 import '@adaptabletools/adaptable-react-aggrid/themes/dark.css';
 
-// import aggrid themes (using new Balham theme)
+// import aggrid themes (using new Alpine theme)
 import '@ag-grid-community/all-modules/dist/styles/ag-grid.css';
 import '@ag-grid-community/all-modules/dist/styles/ag-theme-alpine.css';
 import '@ag-grid-community/all-modules/dist/styles/ag-theme-alpine-dark.css';
@@ -28,7 +28,6 @@ import { CustomSettingsPanel } from './CustomSettingsPanel';
 
 import {
   AllEnterpriseModules,
-  ClientSideRowModelModule,
   GridOptions,
 } from '@ag-grid-enterprise/all-modules';
 
@@ -92,6 +91,12 @@ const rowData = [
   { id: 2, make: 'Ford', model: 'Mondeo', price: 32000, date: '2012-01-02' },
   { id: 3, make: 'Ford', model: 'Fiesta', price: 22000, date: '2014-01-02' },
   { id: 4, make: 'Porsche', model: 'Boxter', price: 72000, date: '2016-01-02' },
+  { id: 5, make: 'Ford', model: 'Galaxy', price: 14900, date: '2010-08-08' },
+  { id: 6, make: 'Porsche', model: 'Mission', price: 53500, date: '2014-07-02' },
+  { id: 7, make: 'Mitsubishi', model: 'Outlander', price: 4500, date: '2018-05-02' },
+  { id: 8, make: 'Toyota', model: 'Yaris', price: 30000, date: '2017-03-02' },
+  { id: 9, make: 'Ford', model: 'Mondeo', price: 46000, date: '2019-01-02' },
+  { id: 10, make: 'Toyota', model: 'Corolla', price: 31000, date: '2016-08-04' },
 ];
 
 // let ag-grid know which columns and what data to use and add some other properties
@@ -104,8 +109,7 @@ const gridOptions: GridOptions = {
   sideBar: true,
   suppressMenuHide: true,
   enableRangeSelection: true,
-  onSelectionChanged: (...args) => {
-  },
+  enableCharts: true,
 };
 
 // build the AdaptableOptions object
@@ -117,6 +121,7 @@ const adaptableOptions: AdaptableOptions = {
   settingsPanelOptions: {
     customSettingsPanels: [
       {
+        // CUSTOM SETTINGS PANEL COMPONENT
         frameworkComponent: CustomSettingsPanel,
         name: 'Custom Settings',
       }
@@ -125,7 +130,8 @@ const adaptableOptions: AdaptableOptions = {
   dashboardOptions: {
     customToolbars: [
       {
-        // example of custom toolbar wrapping a reusable React component (same component is used in a custom tool panel)
+        // CUSTOM TOOLBAR COMPONENT
+        // wraps a reusable React component (same component is used in a custom tool panel)
         name: 'CustomQuickSearch',
         title: 'Custom Quick Search',
         frameworkComponent: ({ adaptableApi }) => {
@@ -144,7 +150,8 @@ const adaptableOptions: AdaptableOptions = {
     toolPanelOrder: ['adaptable', 'columns', 'filters'],
     customToolPanels: [
       {
-        // example of custom tool panel wrapping a reusable React component (same component is used in a custom toolbar)
+        // CUSTOM TOOLPANEL COMPONENT
+        // wraps a reusable React component (same component is used in a custom toolbar)
         name: 'CustomQuickSearch',
         title: 'Custom Quick Search',
         frameworkComponent: ({ adaptableApi }) => {
@@ -158,7 +165,8 @@ const adaptableOptions: AdaptableOptions = {
         },
       },
       {
-        // example of custom tool panel defined as a list of buttons
+        // CUSTOM TOOLPANEL COMPONENT
+        // wraps a AdaptableButton component
         name: 'CustomToolPanelButton',
         toolPanelButtons: [
           {
@@ -180,7 +188,8 @@ const adaptableOptions: AdaptableOptions = {
         ],
       },
     ],
-    // example of custom buttons which are rendered in the AdaptableToolPanel
+    // CUSTOM TOOLPANEL COMPONENT
+    // rendered as a Button in the heading of the tool panel section
     customToolPanelButtons: [
       {
         label: 'Query Popup',
@@ -202,11 +211,10 @@ const adaptableOptions: AdaptableOptions = {
   },
   predefinedConfig: {
     Dashboard: {
-      Revision: 10,
       Tabs: [
         {
           Name: 'Welcome',
-          Toolbars: ['Alert', 'CustomQuickSearch'],
+          Toolbars: ['CustomQuickSearch'],
         },
       ],
     },
@@ -217,7 +225,7 @@ const adaptableOptions: AdaptableOptions = {
   plugins: [finance(), openfin()],
 };
 
-const modules = [...AllEnterpriseModules, ClientSideRowModelModule];
+const modules = [...AllEnterpriseModules];
 
 
 // Create the AdapTable inastance by using the AdapTableReact component
@@ -231,7 +239,6 @@ const App: React.FC = () => {
         gridOptions={gridOptions}
         adaptableOptions={adaptableOptions}
         onAdaptableReady={({ adaptableApi }) => {
-          console.log('ready!!!');
           adaptableApi.eventApi.on('SelectionChanged', (args) => {
             console.warn(args);
           });
