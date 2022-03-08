@@ -131,6 +131,31 @@ const adaptableOptions: AdaptableOptions = {
   dashboardOptions: {
     customToolbars: [
       {
+        name: 'GithubRepo',
+        title: 'Github Repo',
+        showConfigureButton: false,
+        toolbarButtons: [
+          {
+            label: 'See Source Code',
+            buttonStyle: {
+              variant: 'raised',
+              tone: 'info',
+            },
+            icon: {
+              src: 'https://www.pngkey.com/png/full/178-1787243_github-icon-png-github-icon-white-png.png',
+              style: {
+                width: 24,
+                height: 24,
+              },
+            },
+            onClick: (
+            ) => {
+              (window as any)?.open('https://github.com/AdaptableTools/example-adaptable-react-aggrid', '_blank').focus()
+            },
+          },
+        ],
+      },
+      {
         // CUSTOM TOOLBAR COMPONENT
         // wraps a reusable React component (same component is used in a custom tool panel)
         name: 'CustomQuickSearch',
@@ -215,7 +240,7 @@ const adaptableOptions: AdaptableOptions = {
       Tabs: [
         {
           Name: 'Welcome',
-          Toolbars: ['CustomQuickSearch'],
+          Toolbars: ['GithubRepo','CustomQuickSearch'],
         },
       ],
     },
