@@ -10,9 +10,9 @@ The demo is built using these key packages:
 
 ## AdapTable React Example
 
-For full information on how to install and use AdapTable React see the [AdapTable Documentation](https://docs.adaptabletools.com/learn/react-overview).
+> For full information on how to install and use AdapTable React see the [AdapTable Documentation](https://docs.adaptabletools.com/learn/react-overview).
 
-This is a very basic example which showcases the React specific features of Adaptable:
+This is a very basic example which showcases the React specific features of AdapTable:
 
 1. Passing of custom React components to the [Settings Panel](https://docs.adaptabletools.com/learn/ui-settings-panel) section:
 
