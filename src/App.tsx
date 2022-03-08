@@ -169,7 +169,7 @@ const adaptableOptions: AdaptableOptions = {
         // CUSTOM TOOLPANEL COMPONENT
         // wraps a AdaptableButton component
         name: 'CustomToolPanelButton',
-        toolPanelButtons: [
+        buttons: [
           {
             label: 'AlertButton',
             buttonStyle: {
@@ -191,7 +191,7 @@ const adaptableOptions: AdaptableOptions = {
     ],
     // CUSTOM TOOLPANEL COMPONENT
     // rendered as a Button in the heading of the tool panel section
-    customToolPanelButtons: [
+    customButtons: [
       {
         label: 'Query Popup',
         icon: {
