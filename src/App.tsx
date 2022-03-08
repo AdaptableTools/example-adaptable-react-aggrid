@@ -117,6 +117,7 @@ const gridOptions: GridOptions = {
 const adaptableOptions: AdaptableOptions = {
   primaryKey: 'id',
   userName: 'sandbox user',
+  licenseKey: process.env.REACT_APP_ADAPTABLE_LICENSE_KEY,
   adaptableId: 'adaptable react demo',
   settingsPanelOptions: {
     customSettingsPanels: [
