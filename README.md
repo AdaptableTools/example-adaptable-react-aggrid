@@ -8,13 +8,17 @@ The demo is built using these key packages:
 - [Adaptable](https://docs.adaptabletools.com/) version 11.x
 - [AG Grid](https://www.ag-grid.com) version 27.x
 
-## AdapTable React Example
+## AdapTable React Custom Components
+
+The main benefit of using AdapTable React is that it allows you to supply custom components in AdapTable in a React-friendly way.
 
 > For full information on how to install and use AdapTable React see the [AdapTable Documentation](https://docs.adaptabletools.com/learn/react-overview).
 
-This is a very basic example which showcases the React specific features of AdapTable:
+This demo showcases 3 React-specific features of AdapTable:
 
-1. Passing of custom React components to the [Settings Panel](https://docs.adaptabletools.com/learn/ui-settings-panel) section:
+### [Settings Panel](https://docs.adaptabletools.com/learn/ui-settings-panel)
+
+1. Passing of custom React components to the  section:
 
 ```ts
 const adaptableOptions: AdaptableOptions = {
