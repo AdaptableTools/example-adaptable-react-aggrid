@@ -1,4 +1,6 @@
-# example-adaptable-react-aggrid
+# AdapTable React Example App
+
+This example app shows a demo instance of [AdapTable React](https://docs.adaptabletools.com/learn/react-overview).
 
 ## Versions and Dependencies
 
