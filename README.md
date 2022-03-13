@@ -16,9 +16,9 @@ The main benefit of using AdapTable React is that it allows you to supply custom
 
 This demo showcases 3 React-specific features of AdapTable:
 
-### [Settings Panel](https://docs.adaptabletools.com/learn/ui-settings-panel)
+### Settings Panel
 
-1. Passing of custom React components to the  section:
+The demo illustrates how to pass custom React components to the [Settings Panel](https://docs.adaptabletools.com/learn/ui-settings-panel):
 
 ```ts
 const adaptableOptions: AdaptableOptions = {
@@ -36,7 +36,9 @@ const adaptableOptions: AdaptableOptions = {
 }
 ```
 
-2. Passing of custom React components to the [Tool Panel](https://docs.adaptabletools.com/learn/ui-tool-panel) section:
+### Tool Panel
+
+The demo illustrates how to pass custom React components to the [Tool Panel](https://docs.adaptabletools.com/learn/ui-tool-panel):
 
 ```tsx
 const adaptableOptions: AdaptableOptions = {
@@ -64,7 +66,8 @@ const adaptableOptions: AdaptableOptions = {
 }
 ```
 
-3. Passing of custom React components to the [Dashboard Toolbar](https://docs.adaptabletools.com/learn/ui-dashboard#tabs-and-toolbars) section:
+### Custom Toolbar
+The demo illustrates how to pass custom React components to the [Dashboard Toolbar](https://docs.adaptabletools.com/learn/ui-dashboard#tabs-and-toolbars):
 
 ```tsx
 const adaptableOptions: AdaptableOptions = {
