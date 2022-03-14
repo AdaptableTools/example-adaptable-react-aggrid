@@ -1,4 +1,6 @@
-# example-adaptable-react-aggrid
+# AdapTable React Example App
+
+This example app shows a demo instance of [AdapTable React](https://docs.adaptabletools.com/learn/react-overview).
 
 ## Versions and Dependencies
 
@@ -8,13 +10,17 @@ The demo is built using these key packages:
 - [Adaptable](https://docs.adaptabletools.com/) version 11.x
 - [AG Grid](https://www.ag-grid.com) version 27.x
 
-## AdapTable React Example
+## AdapTable React Custom Components
+
+The main benefit of using AdapTable React is that it allows you to supply custom components in AdapTable in a React-friendly way.
 
 > For full information on how to install and use AdapTable React see the [AdapTable Documentation](https://docs.adaptabletools.com/learn/react-overview).
 
-This is a very basic example which showcases the React specific features of AdapTable:
+This demo showcases 3 React-specific features of AdapTable:
 
-1. Passing of custom React components to the [Settings Panel](https://docs.adaptabletools.com/learn/ui-settings-panel) section:
+### Settings Panel
+
+The demo illustrates how to pass custom React components to the [Settings Panel](https://docs.adaptabletools.com/learn/ui-settings-panel):
 
 ```ts
 const adaptableOptions: AdaptableOptions = {
@@ -32,7 +38,9 @@ const adaptableOptions: AdaptableOptions = {
 }
 ```
 
-2. Passing of custom React components to the [Tool Panel](https://docs.adaptabletools.com/learn/ui-tool-panel) section:
+### Tool Panel
+
+The demo illustrates how to pass custom React components to the [Tool Panel](https://docs.adaptabletools.com/learn/ui-tool-panel):
 
 ```tsx
 const adaptableOptions: AdaptableOptions = {
@@ -60,7 +68,8 @@ const adaptableOptions: AdaptableOptions = {
 }
 ```
 
-3. Passing of custom React components to the [Dashboard Toolbar](https://docs.adaptabletools.com/learn/ui-dashboard#tabs-and-toolbars) section:
+### Custom Toolbar
+The demo illustrates how to pass custom React components to the [Dashboard Toolbar](https://docs.adaptabletools.com/learn/ui-dashboard#tabs-and-toolbars):
 
 ```tsx
 const adaptableOptions: AdaptableOptions = {
