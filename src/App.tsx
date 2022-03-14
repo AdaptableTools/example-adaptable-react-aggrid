@@ -4,7 +4,7 @@ import { useState } from 'react';
 // import Adaptable Component and other types
 import AdaptableReact, {
   AdaptableButton,
-  AdaptableOptions,
+  AdaptableOptions, CustomToolbarButtonContext,
   CustomToolPanelButtonContext,
   ToolPanelButtonContext,
 } from '@adaptabletools/adaptable-react-aggrid';
@@ -156,6 +156,28 @@ const adaptableOptions: AdaptableOptions = {
         ],
       },
       {
+        name: 'CustomSettingsPanel',
+        title: 'Custom Settings Panel',
+        showConfigureButton: false,
+        toolbarButtons: [
+          {
+            label: 'Open Custom Settings Panel',
+            buttonStyle: {
+              variant: 'raised',
+              tone: 'accent',
+            },
+            onClick: (
+                button: AdaptableButton<CustomToolbarButtonContext>,
+                context: CustomToolbarButtonContext
+            ) => {
+              context.adaptableApi.settingsPanelApi.showCustomSettingsPanel(
+                  'Custom Settings'
+              );
+            },
+          },
+        ],
+      },
+      {
         // CUSTOM TOOLBAR COMPONENT
         // wraps a reusable React component (same component is used in a custom tool panel)
         name: 'CustomQuickSearch',
@@ -240,7 +262,7 @@ const adaptableOptions: AdaptableOptions = {
       Tabs: [
         {
           Name: 'Welcome',
-          Toolbars: ['GithubRepo','CustomQuickSearch'],
+          Toolbars: ['GithubRepo','CustomSettingsPanel','CustomQuickSearch'],
         },
       ],
     },
