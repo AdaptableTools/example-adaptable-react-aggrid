@@ -1,6 +1,6 @@
 # AdapTable React Example App
 
-This example app shows a demo instance of [AdapTable React](https://docs.adaptabletools.com/learn/react-overview).
+This example app shows a demo instance of [AdapTable React](https://docs.adaptabletools.com/guide/react-overview).
 
 ## Versions and Dependencies
 
@@ -14,13 +14,13 @@ The demo is built using these key packages:
 
 The main benefit of using AdapTable React is that it allows you to supply custom components in AdapTable in a React-friendly way.
 
-> For full information on how to install and use AdapTable React see the [AdapTable Documentation](https://docs.adaptabletools.com/learn/react-overview).
+> For full information on how to install and use AdapTable React see the [AdapTable Documentation](https://docs.adaptabletools.com/guide/react-overview).
 
 This demo showcases 3 React-specific features of AdapTable:
 
 ### Settings Panel
 
-The demo illustrates how to pass custom React components to the [Settings Panel](https://docs.adaptabletools.com/learn/ui-settings-panel):
+The demo illustrates how to pass custom React components to the [Settings Panel](https://docs.adaptabletools.com/guide/ui-settings-panel):
 
 ```ts
 const adaptableOptions: AdaptableOptions = {
@@ -40,7 +40,7 @@ const adaptableOptions: AdaptableOptions = {
 
 ### Tool Panel
 
-The demo illustrates how to pass custom React components to the [Tool Panel](https://docs.adaptabletools.com/learn/ui-tool-panel):
+The demo illustrates how to pass custom React components to the [Tool Panel](https://docs.adaptabletools.com/guide/ui-tool-panel):
 
 ```tsx
 const adaptableOptions: AdaptableOptions = {
