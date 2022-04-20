@@ -117,7 +117,7 @@ A licence for AdapTable provides access to all product features as well as quart
 
 We can make a trial licence available for a short period of time to allow you to try out AdapTable for yourself.
 
-Please contact [`sales@adaptabletools.com`](mailto:sales@adaptabletools.com) or read the [Licence Documentation](https://docs.adaptabletools.com/licensing) for more information.
+Please contact [`sales@adaptabletools.com`](mailto:sales@adaptabletools.com) or read the [Licence Documentation](https://docs.adaptabletools.com/guide/licensing) for more information.
 
 ## Demo
 
