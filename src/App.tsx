@@ -4,7 +4,8 @@ import { useState } from 'react';
 // import Adaptable Component and other types
 import AdaptableReact, {
   AdaptableButton,
-  AdaptableOptions, CustomToolbarButtonContext,
+  AdaptableOptions,
+  CustomToolbarButtonContext,
   CustomToolPanelButtonContext,
   ToolPanelButtonContext,
 } from '@adaptabletools/adaptable-react-aggrid';
@@ -33,9 +34,13 @@ import {
 
 import finance from '@adaptabletools/adaptable-plugin-finance';
 import openfin from '@adaptabletools/adaptable-plugin-openfin';
+import { Provider, useDispatch } from 'react-redux';
+import { counterSelector, store } from './store';
+import { useSelector } from 'react-redux';
 
 const QuickSearchCustomComponent = (props: any) => {
   const [searchText, setSearchText] = useState('');
+  const count = useSelector(counterSelector);
   return (
     <div>
       CUSTOM QuickSearch
@@ -48,6 +53,7 @@ const QuickSearchCustomComponent = (props: any) => {
           props.onSearchTextChange(value);
         }}
       />
+      <div>Counter {count}</div>
     </div>
   );
 };
@@ -92,11 +98,29 @@ const rowData = [
   { id: 3, make: 'Ford', model: 'Fiesta', price: 22000, date: '2014-01-02' },
   { id: 4, make: 'Porsche', model: 'Boxter', price: 72000, date: '2016-01-02' },
   { id: 5, make: 'Ford', model: 'Galaxy', price: 14900, date: '2010-08-08' },
-  { id: 6, make: 'Porsche', model: 'Mission', price: 53500, date: '2014-07-02' },
-  { id: 7, make: 'Mitsubishi', model: 'Outlander', price: 4500, date: '2018-05-02' },
+  {
+    id: 6,
+    make: 'Porsche',
+    model: 'Mission',
+    price: 53500,
+    date: '2014-07-02',
+  },
+  {
+    id: 7,
+    make: 'Mitsubishi',
+    model: 'Outlander',
+    price: 4500,
+    date: '2018-05-02',
+  },
   { id: 8, make: 'Toyota', model: 'Yaris', price: 30000, date: '2017-03-02' },
   { id: 9, make: 'Ford', model: 'Mondeo', price: 46000, date: '2019-01-02' },
-  { id: 10, make: 'Toyota', model: 'Corolla', price: 31000, date: '2016-08-04' },
+  {
+    id: 10,
+    make: 'Toyota',
+    model: 'Corolla',
+    price: 31000,
+    date: '2016-08-04',
+  },
 ];
 
 // let ag-grid know which columns and what data to use and add some other properties
@@ -125,8 +149,8 @@ const adaptableOptions: AdaptableOptions = {
         // CUSTOM SETTINGS PANEL COMPONENT
         frameworkComponent: CustomSettingsPanel,
         name: 'Custom Settings',
-      }
-    ]
+      },
+    ],
   },
   dashboardOptions: {
     customToolbars: [
@@ -148,9 +172,13 @@ const adaptableOptions: AdaptableOptions = {
                 height: 24,
               },
             },
-            onClick: (
-            ) => {
-              (window as any)?.open('https://github.com/AdaptableTools/example-adaptable-react-aggrid', '_blank').focus()
+            onClick: () => {
+              (window as any)
+                ?.open(
+                  'https://github.com/AdaptableTools/example-adaptable-react-aggrid',
+                  '_blank'
+                )
+                .focus();
             },
           },
         ],
@@ -167,11 +195,11 @@ const adaptableOptions: AdaptableOptions = {
               tone: 'accent',
             },
             onClick: (
-                button: AdaptableButton<CustomToolbarButtonContext>,
-                context: CustomToolbarButtonContext
+              button: AdaptableButton<CustomToolbarButtonContext>,
+              context: CustomToolbarButtonContext
             ) => {
               context.adaptableApi.settingsPanelApi.showCustomSettingsPanel(
-                  'Custom Settings'
+                'Custom Settings'
               );
             },
           },
@@ -184,11 +212,13 @@ const adaptableOptions: AdaptableOptions = {
         title: 'Custom Quick Search',
         frameworkComponent: ({ adaptableApi }) => {
           return (
-            <QuickSearchCustomComponent
-              onSearchTextChange={(searchText: string) => {
-                adaptableApi.quickSearchApi.runQuickSearch(searchText);
-              }}
-            />
+            <Provider store={store}>
+              <QuickSearchCustomComponent
+                onSearchTextChange={(searchText: string) => {
+                  adaptableApi.quickSearchApi.runQuickSearch(searchText);
+                }}
+              />
+            </Provider>
           );
         },
       },
@@ -262,7 +292,7 @@ const adaptableOptions: AdaptableOptions = {
       Tabs: [
         {
           Name: 'Welcome',
-          Toolbars: ['GithubRepo','CustomSettingsPanel','CustomQuickSearch'],
+          Toolbars: ['GithubRepo', 'CustomSettingsPanel', 'CustomQuickSearch'],
         },
       ],
     },
@@ -275,13 +305,23 @@ const adaptableOptions: AdaptableOptions = {
 
 const modules = [...AllEnterpriseModules];
 
-
 // Create the AdapTable inastance by using the AdapTableReact component
 // And also create the ag-Grid instance by using the AgGridReact component
 // NOTE: we pass the SAME gridOptions object into both
 const App: React.FC = () => {
+  const count = useSelector(counterSelector);
+  const dispatch = useDispatch();
   return (
     <div style={{ display: 'flex', flexFlow: 'column', height: '100vh' }}>
+      <div style={{ marginBottom: 20 }}>
+        <button onClick={() => dispatch({ type: 'counter/incremented' })}>
+          increment
+        </button>
+        <button onClick={() => dispatch({ type: 'counter/decremented' })}>
+          decrement
+        </button>
+        <b style={{ marginLeft: 10 }}>{count}</b>
+      </div>
       <AdaptableReact
         style={{ flex: 'none' }}
         gridOptions={gridOptions}
