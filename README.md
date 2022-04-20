@@ -97,7 +97,7 @@ const adaptableOptions: AdaptableOptions = {
 }
 ```
 
-> For more information on how to use React Components in AdapTable see the [AdapTable Documentation](https://docs.adaptabletools.com/learn/react-custom-components).
+> For more information on how to use React Components in AdapTable see the [AdapTable Documentation](https://docs.adaptabletools.com/guide/react-custom-components).
 
 ### Installation
 
