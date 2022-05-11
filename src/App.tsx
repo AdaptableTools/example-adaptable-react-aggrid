@@ -125,6 +125,11 @@ const rowData = [
 
 // let ag-grid know which columns and what data to use and add some other properties
 const gridOptions: GridOptions = {
+  defaultColDef:{
+    enablePivot: true,
+    enableRowGroup: true,
+    enableValue: true,
+  },
   columnDefs: columnDefs,
   rowData: rowData,
   components: {
