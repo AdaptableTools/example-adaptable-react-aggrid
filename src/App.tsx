@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 // import Adaptable Component and other types
 import AdaptableReact, {
+  AdaptableApi,
   AdaptableButton,
   AdaptableOptions,
   CustomToolbarButtonContext,
@@ -125,7 +126,7 @@ const rowData = [
 
 // let ag-grid know which columns and what data to use and add some other properties
 const gridOptions: GridOptions = {
-  defaultColDef:{
+  defaultColDef: {
     enablePivot: true,
     enableRowGroup: true,
     enableValue: true,
@@ -314,6 +315,15 @@ const modules = [...AllEnterpriseModules];
 // And also create the ag-Grid instance by using the AgGridReact component
 // NOTE: we pass the SAME gridOptions object into both
 const App: React.FC = () => {
+  const [adaptableApi, setAdaptableApi] = React.useState<AdaptableApi | null>(
+    null
+  );
+
+  React.useEffect(() => {
+    // safe to start using adaptable api
+    console.log({ adaptableApi });
+  }, [adaptableApi]);
+
   const count = useSelector(counterSelector);
   const dispatch = useDispatch();
   return (
@@ -335,6 +345,8 @@ const App: React.FC = () => {
           adaptableApi.eventApi.on('SelectionChanged', (args) => {
             console.warn(args);
           });
+
+          setAdaptableApi(adaptableApi);
         }}
         modules={modules}
       />
