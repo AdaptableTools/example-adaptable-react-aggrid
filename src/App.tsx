@@ -11,8 +11,6 @@ import AdaptableReact, {
   ToolPanelButtonContext,
 } from '@adaptabletools/adaptable-react-aggrid';
 
-import { AdaptableToolPanelAgGridComponent } from '@adaptabletools/adaptable/src/AdaptableComponents';
-
 // import agGrid Component
 import { AgGridReact } from '@ag-grid-community/react';
 
@@ -29,7 +27,7 @@ import '@ag-grid-community/all-modules/dist/styles/ag-theme-alpine-dark.css';
 import { CustomSettingsPanel } from './CustomSettingsPanel';
 
 import {
-  AllEnterpriseModules,
+  AllEnterpriseModules, ColDef,
   GridOptions,
 } from '@ag-grid-enterprise/all-modules';
 
@@ -59,7 +57,13 @@ const QuickSearchCustomComponent = (props: any) => {
   );
 };
 // create ag-Grid Column Definitions
-const columnDefs = [
+const columnDefs:ColDef[] = [
+  {
+    colId: 'id',
+    hide: true,
+    suppressColumnsToolPanel:true,
+    suppressFiltersToolPanel:true
+  },
   {
     headerName: 'Auto Make',
     field: 'make',
@@ -133,10 +137,7 @@ const gridOptions: GridOptions = {
   },
   columnDefs: columnDefs,
   rowData: rowData,
-  components: {
-    AdaptableToolPanel: AdaptableToolPanelAgGridComponent,
-  },
-  sideBar: true,
+  sideBar: ['adaptable', 'columns', 'filters'],
   suppressMenuHide: true,
   enableRangeSelection: true,
   enableCharts: true,
@@ -231,7 +232,6 @@ const adaptableOptions: AdaptableOptions = {
     ],
   },
   toolPanelOptions: {
-    toolPanelOrder: ['adaptable', 'columns', 'filters'],
     customToolPanels: [
       {
         // CUSTOM TOOLPANEL COMPONENT
