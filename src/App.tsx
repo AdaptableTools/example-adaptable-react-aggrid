@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import {useRef, useState} from 'react';
 
 // import Adaptable Component and other types
 import AdaptableReact, {
@@ -11,8 +11,6 @@ import AdaptableReact, {
   ToolPanelButtonContext,
 } from '@adaptabletools/adaptable-react-aggrid';
 
-// import agGrid Component
-import { AgGridReact } from '@ag-grid-community/react';
 
 // import adaptable css and themes
 import '@adaptabletools/adaptable-react-aggrid/base.css';
@@ -31,11 +29,10 @@ import {
   GridOptions,
 } from '@ag-grid-enterprise/all-modules';
 
-import finance from '@adaptabletools/adaptable-plugin-finance';
-import openfin from '@adaptabletools/adaptable-plugin-openfin';
 import { Provider, useDispatch } from 'react-redux';
 import { counterSelector, store } from './store';
 import { useSelector } from 'react-redux';
+import {AgGrid} from "./AgGrid";
 
 const QuickSearchCustomComponent = (props: any) => {
   const [searchText, setSearchText] = useState('');
@@ -137,7 +134,7 @@ const gridOptions: GridOptions = {
   },
   columnDefs: columnDefs,
   rowData: rowData,
-  sideBar: ['adaptable', 'columns', 'filters'],
+  sideBar: true,
   suppressMenuHide: true,
   enableRangeSelection: true,
   enableCharts: true,
@@ -306,7 +303,6 @@ const adaptableOptions: AdaptableOptions = {
       Revision: Date.now(),
     },
   },
-  plugins: [finance(), openfin()],
 };
 
 const modules = [...AllEnterpriseModules];
@@ -326,6 +322,7 @@ const App: React.FC = () => {
 
   const count = useSelector(counterSelector);
   const dispatch = useDispatch();
+
   return (
     <div style={{ display: 'flex', flexFlow: 'column', height: '100vh' }}>
       <div style={{ marginBottom: 20 }}>
@@ -338,21 +335,21 @@ const App: React.FC = () => {
         <b style={{ marginLeft: 10 }}>{count}</b>
       </div>
       <AdaptableReact
-        style={{ flex: 'none' }}
-        gridOptions={gridOptions}
-        adaptableOptions={adaptableOptions}
-        onAdaptableReady={({ adaptableApi }) => {
-          adaptableApi.eventApi.on('SelectionChanged', (args) => {
-            console.warn(args);
-          });
+          style={{ flex: 'none' }}
+          gridOptions={gridOptions}
+          adaptableOptions={adaptableOptions}
+          onAdaptableReady={({ adaptableApi }) => {
+            adaptableApi.eventApi.on('SelectionChanged', (args) => {
+              console.warn(args);
+            });
 
-          setAdaptableApi(adaptableApi);
-        }}
-        modules={modules}
+            setAdaptableApi(adaptableApi);
+          }}
+          modules={modules}
       />
-      <div className="ag-theme-alpine" style={{ flex: 1 }}>
-        <AgGridReact gridOptions={gridOptions} modules={modules} />
-      </div>
+
+        <AgGrid gridOptions={gridOptions} modules={modules} />
+
     </div>
   );
 };
