@@ -27,7 +27,8 @@ import '@ag-grid-community/all-modules/dist/styles/ag-theme-alpine-dark.css';
 import { CustomSettingsPanel } from './CustomSettingsPanel';
 
 import {
-  AllEnterpriseModules, ColDef,
+  AllEnterpriseModules,
+  ColDef,
   GridOptions,
 } from '@ag-grid-enterprise/all-modules';
 
@@ -57,12 +58,12 @@ const QuickSearchCustomComponent = (props: any) => {
   );
 };
 // create ag-Grid Column Definitions
-const columnDefs:ColDef[] = [
+const columnDefs: ColDef[] = [
   {
     colId: 'id',
     hide: true,
-    suppressColumnsToolPanel:true,
-    suppressFiltersToolPanel:true
+    suppressColumnsToolPanel: true,
+    suppressFiltersToolPanel: true,
   },
   {
     headerName: 'Auto Make',
@@ -137,7 +138,7 @@ const gridOptions: GridOptions = {
   },
   columnDefs: columnDefs,
   rowData: rowData,
-  sideBar: ['adaptable', 'columns', 'filters'],
+
   suppressMenuHide: true,
   enableRangeSelection: true,
   enableCharts: true,
