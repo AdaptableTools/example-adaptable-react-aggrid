@@ -138,6 +138,7 @@ const gridOptions: GridOptions = {
   },
   columnDefs: columnDefs,
   rowData: rowData,
+  sideBar:true,
 
   suppressMenuHide: true,
   enableRangeSelection: true,
