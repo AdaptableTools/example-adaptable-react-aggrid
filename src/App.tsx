@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { createRoot } from 'react-dom/client';
 
 // import Adaptable Component and other types
 import AdaptableReact, {
@@ -14,29 +15,57 @@ import AdaptableReact, {
 // import agGrid Component
 import { AgGridReact } from '@ag-grid-community/react';
 
+// some types
+import { ColDef, GridOptions, Module } from '@ag-grid-community/core';
+
+// and all the modules we need
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { SideBarModule } from '@ag-grid-enterprise/side-bar';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { StatusBarModule } from '@ag-grid-enterprise/status-bar';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RangeSelectionModule } from '@ag-grid-enterprise/range-selection';
+import { RichSelectModule } from '@ag-grid-enterprise/rich-select';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { SparklinesModule } from '@ag-grid-enterprise/sparklines';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
+
 // import adaptable css and themes
 import '@adaptabletools/adaptable-react-aggrid/base.css';
 import '@adaptabletools/adaptable-react-aggrid/themes/light.css';
 import '@adaptabletools/adaptable-react-aggrid/themes/dark.css';
 
 // import aggrid themes (using new Alpine theme)
-import '@ag-grid-community/all-modules/dist/styles/ag-grid.css';
-import '@ag-grid-community/all-modules/dist/styles/ag-theme-alpine.css';
-import '@ag-grid-community/all-modules/dist/styles/ag-theme-alpine-dark.css';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
 
 import { CustomSettingsPanel } from './CustomSettingsPanel';
-
-import {
-  AllEnterpriseModules,
-  ColDef,
-  GridOptions,
-} from '@ag-grid-enterprise/all-modules';
 
 import finance from '@adaptabletools/adaptable-plugin-finance';
 import openfin from '@adaptabletools/adaptable-plugin-openfin';
 import { Provider, useDispatch } from 'react-redux';
 import { counterSelector, store } from './store';
 import { useSelector } from 'react-redux';
+
+const RECOMMENDED_MODULES: Module[] = [
+  ClientSideRowModelModule,
+  SideBarModule,
+  ColumnsToolPanelModule,
+  FiltersToolPanelModule,
+  StatusBarModule,
+  MenuModule,
+  RangeSelectionModule,
+  RichSelectModule,
+  ExcelExportModule,
+  GridChartsModule,
+  SparklinesModule,
+  RowGroupingModule,
+  ClipboardModule,
+];
 
 const QuickSearchCustomComponent = (props: any) => {
   const [searchText, setSearchText] = useState('');
@@ -138,7 +167,7 @@ const gridOptions: GridOptions = {
   },
   columnDefs: columnDefs,
   rowData: rowData,
-  sideBar:true,
+  sideBar: true,
 
   suppressMenuHide: true,
   enableRangeSelection: true,
@@ -311,8 +340,6 @@ const adaptableOptions: AdaptableOptions = {
   plugins: [finance(), openfin()],
 };
 
-const modules = [...AllEnterpriseModules];
-
 // Create the AdapTable inastance by using the AdapTableReact component
 // And also create the ag-Grid instance by using the AgGridReact component
 // NOTE: we pass the SAME gridOptions object into both
@@ -323,7 +350,7 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     // safe to start using adaptable api
-    console.log({ adaptableApi });
+    // console.log({ adaptableApi });
   }, [adaptableApi]);
 
   const count = useSelector(counterSelector);
@@ -341,6 +368,15 @@ const App: React.FC = () => {
       </div>
       <AdaptableReact
         style={{ flex: 'none' }}
+        renderReactRoot={(node, container) => {
+          const root = createRoot(container);
+
+          root.render(node);
+
+          return () => {
+            root.unmount();
+          };
+        }}
         gridOptions={gridOptions}
         adaptableOptions={adaptableOptions}
         onAdaptableReady={({ adaptableApi }) => {
@@ -350,10 +386,9 @@ const App: React.FC = () => {
 
           setAdaptableApi(adaptableApi);
         }}
-        modules={modules}
       />
       <div className="ag-theme-alpine" style={{ flex: 1 }}>
-        <AgGridReact gridOptions={gridOptions} modules={modules} />
+        <AgGridReact gridOptions={gridOptions} modules={RECOMMENDED_MODULES} />
       </div>
     </div>
   );

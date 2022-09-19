@@ -3,26 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@adaptabletools/adaptable-plugin-finance": "12.2.0",
-    "@adaptabletools/adaptable-plugin-ipushpull": "12.2.0",
-    "@adaptabletools/adaptable-plugin-openfin": "12.2.0",
-    "@adaptabletools/adaptable-react-aggrid": "12.2.0",
-    "@ag-grid-community/all-modules": "27.3.0",
-    "@ag-grid-community/react": "27.3.0",
-    "@ag-grid-enterprise/all-modules": "27.3.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-redux": "^8.0.0",
-    "react-scripts": "^4.0.3",
-    "redux": "^4.2.0",
-    "typescript": "4.0.3"
+    "@adaptabletools/adaptable-plugin-finance": "13.0.0-canary.9",
+    "@adaptabletools/adaptable-plugin-ipushpull": "13.0.0-canary.9",
+    "@adaptabletools/adaptable-plugin-openfin": "13.0.0-canary.9",
+    "@adaptabletools/adaptable-react-aggrid": "13.0.0-canary.9",
+    "@ag-grid-community/client-side-row-model": "28.1.0",
+    "@ag-grid-community/core": "28.1.0",
+    "@ag-grid-community/react": "28.1.0",
+    "@ag-grid-enterprise/charts": "28.1.0",
+    "@ag-grid-enterprise/clipboard": "28.1.0",
+    "@ag-grid-enterprise/column-tool-panel": "28.1.0",
+    "@ag-grid-enterprise/excel-export": "28.1.0",
+    "@ag-grid-enterprise/filter-tool-panel": "28.1.0",
+    "@ag-grid-enterprise/menu": "28.1.0",
+    "@ag-grid-enterprise/range-selection": "28.1.0",
+    "@ag-grid-enterprise/rich-select": "28.1.0",
+    "@ag-grid-enterprise/row-grouping": "28.1.0",
+    "@ag-grid-enterprise/side-bar": "28.1.0",
+    "@ag-grid-enterprise/sparklines": "28.1.0",
+    "@ag-grid-enterprise/status-bar": "28.1.0",
+    "@types/react": "^18.0.20",
+    "@types/react-dom": "^18.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -46,6 +49,8 @@
     ]
   },
   "devDependencies": {
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "react-scripts": "^4.0.3",
+    "typescript": "4.0.3"
   }
 }
