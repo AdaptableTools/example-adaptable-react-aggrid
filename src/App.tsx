@@ -340,6 +340,8 @@ const adaptableOptions: AdaptableOptions = {
   plugins: [finance(), openfin()],
 };
 
+const renderWeakMap: WeakMap<HTMLElement, any> = new WeakMap();
+
 // Create the AdapTable inastance by using the AdapTableReact component
 // And also create the ag-Grid instance by using the AgGridReact component
 // NOTE: we pass the SAME gridOptions object into both
@@ -369,7 +371,11 @@ const App: React.FC = () => {
       <AdaptableReact
         style={{ flex: 'none' }}
         renderReactRoot={(node, container) => {
-          const root = createRoot(container);
+          let root = renderWeakMap.get(container);
+
+          if (!root) {
+            renderWeakMap.set(container, (root = createRoot(container)));
+          }
 
           root.render(node);
 
