@@ -39,9 +39,8 @@ import '@adaptabletools/adaptable-react-aggrid/themes/light.css';
 import '@adaptabletools/adaptable-react-aggrid/themes/dark.css';
 
 // import aggrid themes (using new Alpine theme)
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
-import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
-import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import '@ag-grid-community/styles/ag-grid.css';
+import '@ag-grid-community/styles/ag-theme-alpine.css';
 
 import { CustomSettingsPanel } from './CustomSettingsPanel';
 
@@ -50,6 +49,7 @@ import openfin from '@adaptabletools/adaptable-plugin-openfin';
 import { Provider, useDispatch } from 'react-redux';
 import { counterSelector, store } from './store';
 import { useSelector } from 'react-redux';
+import { Car, rowData } from './rowData';
 
 const RECOMMENDED_MODULES: Module[] = [
   ClientSideRowModelModule,
@@ -87,12 +87,13 @@ const QuickSearchCustomComponent = (props: any) => {
   );
 };
 // create ag-Grid Column Definitions
-const columnDefs: ColDef[] = [
+const columnDefs: ColDef<Car>[] = [
   {
     colId: 'id',
     hide: true,
     suppressColumnsToolPanel: true,
     suppressFiltersToolPanel: true,
+    type: 'abColDefNumber',
   },
   {
     headerName: 'Auto Make',
@@ -126,40 +127,9 @@ const columnDefs: ColDef[] = [
     floatingFilter: true,
   },
 ];
-// some dummy data
-const rowData = [
-  { id: 1, make: 'Toyota', model: 'Celica', price: 35000, date: '2010-01-02' },
-  { id: 2, make: 'Ford', model: 'Mondeo', price: 32000, date: '2012-01-02' },
-  { id: 3, make: 'Ford', model: 'Fiesta', price: 22000, date: '2014-01-02' },
-  { id: 4, make: 'Porsche', model: 'Boxter', price: 72000, date: '2016-01-02' },
-  { id: 5, make: 'Ford', model: 'Galaxy', price: 14900, date: '2010-08-08' },
-  {
-    id: 6,
-    make: 'Porsche',
-    model: 'Mission',
-    price: 53500,
-    date: '2014-07-02',
-  },
-  {
-    id: 7,
-    make: 'Mitsubishi',
-    model: 'Outlander',
-    price: 4500,
-    date: '2018-05-02',
-  },
-  { id: 8, make: 'Toyota', model: 'Yaris', price: 30000, date: '2017-03-02' },
-  { id: 9, make: 'Ford', model: 'Mondeo', price: 46000, date: '2019-01-02' },
-  {
-    id: 10,
-    make: 'Toyota',
-    model: 'Corolla',
-    price: 31000,
-    date: '2016-08-04',
-  },
-];
 
 // let ag-grid know which columns and what data to use and add some other properties
-const gridOptions: GridOptions = {
+const gridOptions: GridOptions<Car> = {
   defaultColDef: {
     enablePivot: true,
     enableRowGroup: true,
@@ -176,7 +146,7 @@ const gridOptions: GridOptions = {
 
 // build the AdaptableOptions object
 // in this example we are NOT passing in predefined config but in the real world you will ship the AdapTable with objects and permissions
-const adaptableOptions: AdaptableOptions = {
+const adaptableOptions: AdaptableOptions<Car> = {
   primaryKey: 'id',
   userName: 'sandbox user',
   licenseKey: process.env.REACT_APP_ADAPTABLE_LICENSE_KEY,
@@ -236,7 +206,7 @@ const adaptableOptions: AdaptableOptions = {
               button: AdaptableButton<CustomToolbarButtonContext>,
               context: CustomToolbarButtonContext
             ) => {
-              context.adaptableApi.settingsPanelApi.showCustomSettingsPanel(
+              context.adaptableApi.settingsPanelApi.openCustomSettingsPanel(
                 'Custom Settings'
               );
             },
@@ -319,7 +289,7 @@ const adaptableOptions: AdaptableOptions = {
           button: AdaptableButton<ToolPanelButtonContext>,
           context: ToolPanelButtonContext
         ) => {
-          context.adaptableApi.queryApi.showQueryPopup();
+          context.adaptableApi.queryApi.openQuerySettingsPanel();
         },
       },
     ],
