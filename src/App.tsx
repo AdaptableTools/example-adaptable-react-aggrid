@@ -135,6 +135,9 @@ const gridOptions: GridOptions<Car> = {
     enableRowGroup: true,
     enableValue: true,
   },
+  statusBar: {
+    statusPanels: [],
+  },
   columnDefs: columnDefs,
   rowData: rowData,
   sideBar: true,
@@ -146,7 +149,7 @@ const gridOptions: GridOptions<Car> = {
 
 // build the AdaptableOptions object
 // in this example we are NOT passing in predefined config but in the real world you will ship the AdapTable with objects and permissions
-const adaptableOptions: AdaptableOptions<Car> = {
+const adaptableOptions: AdaptableOptions = {
   primaryKey: 'id',
   userName: 'sandbox user',
   licenseKey: process.env.REACT_APP_ADAPTABLE_LICENSE_KEY,
@@ -206,9 +209,9 @@ const adaptableOptions: AdaptableOptions<Car> = {
               button: AdaptableButton<CustomToolbarButtonContext>,
               context: CustomToolbarButtonContext
             ) => {
-              context.adaptableApi.settingsPanelApi.openCustomSettingsPanel(
-                'Custom Settings'
-              );
+              // context.adaptableApi.settingsPanelApi.openCustomSettingsPanel(
+              //   'Custom Settings'
+              // );
             },
           },
         ],
@@ -289,7 +292,7 @@ const adaptableOptions: AdaptableOptions<Car> = {
           button: AdaptableButton<ToolPanelButtonContext>,
           context: ToolPanelButtonContext
         ) => {
-          context.adaptableApi.queryApi.openQuerySettingsPanel();
+          // context.adaptableApi.queryApi.openQuerySettingsPanel();
         },
       },
     ],
