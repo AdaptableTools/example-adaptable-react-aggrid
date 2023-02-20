@@ -7,8 +7,8 @@ This example app shows a demo instance of [AdapTable React](https://docs.adaptab
 The demo is built using these key packages:
 
 - [React](https://github.com/facebook/react) version 18.x
-- [Adaptable](https://docs.adaptabletools.com/) version 13.x
-- [AG Grid](https://www.ag-grid.com) version 28.x
+- [Adaptable](https://docs.adaptabletools.com/) version 15.x
+- [AG Grid](https://www.ag-grid.com) version 29.x
 
 ## AdapTable React Custom Components
 
