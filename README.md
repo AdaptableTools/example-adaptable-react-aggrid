@@ -113,7 +113,8 @@ $ npm run start
 
 ## Licences
 
-A licence for AdapTable provides access to all product features as well as quarterly updates and enhancements through the lifetime of the licence, comprehensive support, and access to all 3rd party libraries.
+
+An [AdapTable Licence](https://docs.adaptabletools.com/guide/licensing) provides access to all product features as well as quarterly updates and enhancements through the lifetime of the licence, comprehensive support, and access to all 3rd party libraries.
 
 We can make a trial licence available for a short period of time to allow you to try out AdapTable for yourself.
 
@@ -133,4 +134,4 @@ General information about Adaptable Tools is available at our [Website](http://w
 
 ## Support
 
-For all support enquiries please email [`support@adaptabletools.com`](mailto:support@adaptabletools.com) or [raise a Support Ticket](https://adaptabletools.zendesk.com/hc/en-us/requests/new).
+For all support enquiries please [raise a Support Ticket](https://adaptabletools.zendesk.com/hc/en-us/requests/new).
