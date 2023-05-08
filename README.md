@@ -1,7 +1,5 @@
 # AdapTable React Example App
 
-This example app shows a demo instance of [AdapTable React](https://docs.adaptabletools.com/guide/react-overview).
-
 This is a fairly basic example of how to get started with AdapTable React.
 
 AdapTable React is the React Framework version of AdapTable - the market-leading, low code AG Grid extension.
