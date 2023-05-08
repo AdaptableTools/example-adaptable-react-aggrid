@@ -2,6 +2,14 @@
 
 This example app shows a demo instance of [AdapTable React](https://docs.adaptabletools.com/guide/react-overview).
 
+This is a fairly basic example of how to get started with AdapTable React.
+
+AdapTable React is the React Framework version of AdapTable - the market-leading, low code AG Grid extension.
+
+For full information on how to use AdapTable React see the [AdapTable Documentation](https://docs.adaptabletools.com/guide/react-overview).
+
+> For an absolute barebones example see the [Adaptable React Support Template](https://github.com/AdaptableTools/support-template-adaptable-react-aggrid) 
+
 ## Versions and Dependencies
 
 The demo is built using these key packages:
@@ -112,7 +120,6 @@ $ npm run start
 ```
 
 ## Licences
-
 
 An [AdapTable Licence](https://docs.adaptabletools.com/guide/licensing) provides access to all product features as well as quarterly updates and enhancements through the lifetime of the licence, comprehensive support, and access to all 3rd party libraries.
 
