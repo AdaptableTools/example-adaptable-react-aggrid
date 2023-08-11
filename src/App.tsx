@@ -44,7 +44,6 @@ import '@ag-grid-community/styles/ag-theme-alpine.css';
 
 import { CustomSettingsPanel } from './CustomSettingsPanel';
 
-import finance from '@adaptabletools/adaptable-plugin-finance';
 import openfin from '@adaptabletools/adaptable-plugin-openfin';
 import { Provider, useDispatch } from 'react-redux';
 import { counterSelector, store } from './store';
@@ -307,7 +306,7 @@ const adaptableOptions: AdaptableOptions<Car> = {
       Revision: Date.now(),
     },
   },
-  plugins: [finance(), openfin()],
+  plugins: [openfin()],
 };
 
 const renderWeakMap: WeakMap<HTMLElement, any> = new WeakMap();
