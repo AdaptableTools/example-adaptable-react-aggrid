@@ -13,12 +13,12 @@ For full information on how to use AdapTable React see the [AdapTable Documentat
 The demo is built using these key packages:
 
 - [React](https://github.com/facebook/react) version 18.x
-- [Adaptable](https://docs.adaptabletools.com/) version 15.x
-- [AG Grid](https://www.ag-grid.com) version 29.x
+- [AdapTable](https://docs.adaptabletools.com/) version 16.x
+- [AG Grid](https://www.ag-grid.com) version 30.x
 
 ## AdapTable React Custom Components
 
-The main benefit of using AdapTable React is that it allows you to supply custom components in AdapTable in a React-friendly way.
+The main benefit of using AdapTable React is that it allows you to supply [custom components](https://docs.adaptabletools.com/guide/react-custom-components) in AdapTable in a React-friendly way.
 
 > For full information on how to install and use AdapTable React see the [AdapTable Documentation](https://docs.adaptabletools.com/guide/react-overview).
 
@@ -75,7 +75,7 @@ const adaptableOptions: AdaptableOptions = {
 ```
 
 ### Custom Toolbar
-The demo illustrates how to pass custom React components to the [Dashboard Toolbar](https://docs.adaptabletools.com/learn/ui-dashboard#tabs-and-toolbars):
+The demo illustrates how to pass custom React components to the [Dashboard Toolbar](https://docs.adaptabletools.com/guide/ui-dashboard):
 
 ```tsx
 const adaptableOptions: AdaptableOptions = {
