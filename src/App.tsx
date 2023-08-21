@@ -45,10 +45,10 @@ import '@ag-grid-community/styles/ag-theme-alpine.css';
 import { CustomSettingsPanel } from './CustomSettingsPanel';
 
 import openfin from '@adaptabletools/adaptable-plugin-openfin';
-import { Provider, useDispatch } from 'react-redux';
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import { counterSelector, store } from './store';
-import { useSelector } from 'react-redux';
 import { Car, rowData } from './rowData';
+import { SelectionChangedInfo } from '@adaptabletools/adaptable/src/types';
 
 const RECOMMENDED_MODULES: Module[] = [
   ClientSideRowModelModule,
@@ -355,9 +355,12 @@ const App: React.FC = () => {
         gridOptions={gridOptions}
         adaptableOptions={adaptableOptions}
         onAdaptableReady={({ adaptableApi }) => {
-          adaptableApi.eventApi.on('SelectionChanged', (args) => {
-            console.warn(args);
-          });
+          adaptableApi.eventApi.on(
+            'SelectionChanged',
+            (info: SelectionChangedInfo) => {
+              console.warn(info);
+            }
+          );
 
           setAdaptableApi(adaptableApi);
         }}

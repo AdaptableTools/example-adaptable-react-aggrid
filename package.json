@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@adaptabletools/adaptable-plugin-ipushpull": "16.0.0",
-    "@adaptabletools/adaptable-plugin-openfin": "16.0.0",
-    "@adaptabletools/adaptable-react-aggrid": "16.0.0",
+    "@adaptabletools/adaptable-plugin-ipushpull": "16.0.2",
+    "@adaptabletools/adaptable-plugin-openfin": "16.0.2",
+    "@adaptabletools/adaptable-react-aggrid": "16.0.2",
     "@ag-grid-community/client-side-row-model": "30.0.6",
     "@ag-grid-community/core": "30.0.6",
     "@ag-grid-community/styles": "30.0.6",
