@@ -1,12 +1,21 @@
-import { AdaptableApi, ReactFrameworkComponent } from '@adaptabletools/adaptable-react-aggrid';
 import * as React from 'react';
+import { AdaptableApi, ReactFrameworkComponent } from '@adaptabletools/adaptable-react-aggrid';
 
+export const CustomSettingsPanel: ReactFrameworkComponent = ({ adaptableApi }) => {
+  return (
+    <div>
+      <h1>Custom Settings</h1>
+      <CustomThemeVariables />
+      <AddDataForm api={adaptableApi} />
+    </div>
+  );
+};
 
 const emptyDataItem = {
   make: '',
   model: '',
   price: 0,
-  date: (new Date()).toISOString().split('T')[0],
+  date: new Date().toISOString().split('T')[0],
 };
 
 const AddDataForm: React.FunctionComponent<{ api: AdaptableApi }> = (props) => {
@@ -15,16 +24,16 @@ const AddDataForm: React.FunctionComponent<{ api: AdaptableApi }> = (props) => {
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    props.api.gridApi.addGridData([values])
-    setValues(emptyDataItem)
-  }
+    props.api.gridApi.addGridData([values]);
+    setValues(emptyDataItem);
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setValues({
       ...values,
-      [event.target.name]: event.target.value
-    })
-  }
+      [event.target.name]: event.target.value,
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -45,58 +54,54 @@ const AddDataForm: React.FunctionComponent<{ api: AdaptableApi }> = (props) => {
         Date manufactured
         <input onChange={handleChange} value={date} name="date" type="date" />
       </label>
-      <button type='submit'>Add New</button>
+      <button type="submit">Add New</button>
     </form>
-  )
-}
-
+  );
+};
 
 const variableMap = {
   background: '--ab-cmp-adaptable-popup-topbar__background',
-  'popup-background': '--ab-cmp-adaptable-popup__background'
-}
+  'popup-background': '--ab-cmp-adaptable-popup__background',
+};
 
 const CustomThemeVariables = () => {
   const initialValues = React.useMemo(() => {
-    const root = (document.querySelector(':root') as HTMLElement);
+    const root = document.querySelector(':root') as HTMLElement;
     const computedStyle = getComputedStyle(root);
 
     return {
       background: computedStyle.getPropertyValue(variableMap['background']).trim(),
       'popup-background': computedStyle.getPropertyValue(variableMap['popup-background']).trim(),
-    }
+    };
   }, []);
   const handleChange = (variableName: 'background' | 'popup-background', color: string) => {
-    const root = (document.querySelector(':root') as HTMLElement);
+    const root = document.querySelector(':root') as HTMLElement;
     if (!root) {
       return;
     }
 
     root.style.setProperty(variableMap[variableName], color);
-  }
+  };
 
   return (
     <div>
       <h3>Custom theme variables</h3>
       <label className="customSettingsPanel-label">
         Background
-        <input defaultValue={initialValues['background']} onChange={(event) => handleChange('background', event.target.value)} type="color" />
+        <input
+          defaultValue={initialValues['background']}
+          onChange={(event) => handleChange('background', event.target.value)}
+          type="color"
+        />
       </label>
       <label className="customSettingsPanel-label">
         Popup Background
-        <input defaultValue={initialValues['popup-background']} onChange={(event) => handleChange('popup-background', event.target.value)} type="color" />
+        <input
+          defaultValue={initialValues['popup-background']}
+          onChange={(event) => handleChange('popup-background', event.target.value)}
+          type="color"
+        />
       </label>
     </div>
-  )
-}
-
-
-export const CustomSettingsPanel: ReactFrameworkComponent = ({ adaptableApi }) => {
-  return (
-    <div>
-      <h1>Custom Settings</h1>
-      <CustomThemeVariables />
-      <AddDataForm api={adaptableApi} />
-    </div>
   );
-}
+};

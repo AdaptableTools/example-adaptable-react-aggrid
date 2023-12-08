@@ -15,6 +15,6 @@ function counterReducer(state: State = { value: 0 }, action: Action) {
   }
 }
 
-export const store = createStore(counterReducer);
+export const storeRedux = createStore(counterReducer);
 
 export const counterSelector = (state: State) => state.value;

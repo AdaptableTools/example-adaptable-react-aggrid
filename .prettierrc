@@ -3,6 +3,8 @@
   "singleQuote": true,
   "trailingComma": "es5",
   "tabWidth": 2,
-  "parser": "typescript",
-  "arrowParens": "always"
+  "useTabs": false,
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "printWidth": 100
 }
