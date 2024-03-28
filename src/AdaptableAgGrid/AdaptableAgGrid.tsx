@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useMemo } from 'react';
 import { GridOptions } from '@ag-grid-community/core';
-import { AgGridReact } from '@ag-grid-community/react';
 import { LicenseManager } from '@ag-grid-enterprise/core';
-import AdaptableReact, {
+import {
+  Adaptable,
   AdaptableApi,
   AdaptableButton,
   AdaptableOptions,
@@ -234,17 +234,20 @@ export const AdaptableAgGrid = () => {
         <button onClick={() => dispatch({ type: 'counter/decremented' })}>decrement</button>
         <b style={{ marginLeft: 10 }}>{count}</b>
       </div>
-      <AdaptableReact
+      <Adaptable.Provider
         gridOptions={gridOptions}
         adaptableOptions={adaptableOptions}
         onAdaptableReady={({ adaptableApi }) => {
           // save a reference to adaptable api
           adaptableApiRef.current = adaptableApi;
         }}
-      />
-      <div style={{ flex: 1 }} className="ag-theme-alpine">
-        <AgGridReact gridOptions={gridOptions} modules={agGridModules} />
-      </div>
+      >
+        <Adaptable.UI />
+
+        <div style={{ flex: 1 }} className="ag-theme-alpine">
+          <Adaptable.AgGridReact modules={agGridModules} />
+        </div>
+      </Adaptable.Provider>
     </div>
   );
 };
