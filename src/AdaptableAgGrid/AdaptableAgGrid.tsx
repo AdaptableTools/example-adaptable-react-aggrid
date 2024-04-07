@@ -236,6 +236,7 @@ export const AdaptableAgGrid = () => {
       </div>
       <Adaptable.Provider
         gridOptions={gridOptions}
+        modules={agGridModules}
         adaptableOptions={adaptableOptions}
         onAdaptableReady={({ adaptableApi }) => {
           // save a reference to adaptable api
@@ -245,7 +246,7 @@ export const AdaptableAgGrid = () => {
         <Adaptable.UI />
 
         <div style={{ flex: 1 }} className="ag-theme-alpine">
-          <Adaptable.AgGridReact modules={agGridModules} />
+          <Adaptable.AgGridReact />
         </div>
       </Adaptable.Provider>
     </div>
