@@ -239,6 +239,78 @@ export const AdaptableAgGrid = () => {
             },
           ],
         },
+        Layout: {
+          CurrentLayout: 'Basic',
+          Layouts: [
+            {
+              Name: 'Basic',
+              Columns: [
+                'name',
+                'language',
+                'github_stars',
+                'license',
+                'week_issue_change',
+                'created_at',
+                'has_wiki',
+                'updated_at',
+                'pushed_at',
+                'github_watchers',
+                'description',
+                'open_issues_count',
+                'closed_issues_count',
+                'open_pr_count',
+                'closed_pr_count',
+              ],
+            },
+            {
+              Name: 'Sorted',
+              Columns: [
+                'name',
+                'language',
+                'github_stars',
+                'license',
+                'open_issues_count',
+                'closed_issues_count',
+                'open_pr_count',
+                'closed_pr_count',
+              ],
+              ColumnSorts: [
+                {
+                  ColumnId: 'license',
+                  SortOrder: 'Asc',
+                },
+                {
+                  ColumnId: 'language',
+                  SortOrder: 'Desc',
+                },
+              ],
+            },
+            {
+              Name: 'Row Grouped',
+              Columns: [
+                'name',
+                'github_stars',
+                'open_issues_count',
+                'closed_issues_count',
+                'open_pr_count',
+                'closed_pr_count',
+                'open_issues_count',
+                'closed_issues_count',
+              ],
+              RowGroupedColumns: ['license', 'language'],
+            },
+            {
+              Name: 'Pivot',
+              Columns: [],
+              PivotColumns: ['language'],
+              RowGroupedColumns: ['license'],
+              EnablePivot: true,
+              AggregationColumns: {
+                github_stars: 'sum',
+              },
+            },
+          ],
+        },
       },
     }),
     []
