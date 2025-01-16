@@ -1,61 +1,12 @@
 import * as React from 'react';
-import { AdaptableApi, ReactFrameworkComponent } from '@adaptabletools/adaptable-react-aggrid';
+import { ReactFrameworkComponent } from '@adaptabletools/adaptable-react-aggrid';
 
 export const CustomSettingsPanel: ReactFrameworkComponent = ({ adaptableApi }) => {
   return (
     <div>
       <h1>Custom Settings</h1>
       <CustomThemeVariables />
-      <AddDataForm api={adaptableApi} />
     </div>
-  );
-};
-
-const emptyDataItem = {
-  make: '',
-  model: '',
-  price: 0,
-  date: new Date().toISOString().split('T')[0],
-};
-
-const AddDataForm: React.FunctionComponent<{ api: AdaptableApi }> = (props) => {
-  const [values, setValues] = React.useState(emptyDataItem);
-  const { make, model, price, date } = values;
-
-  const handleSubmit = (event: React.SyntheticEvent) => {
-    event.preventDefault();
-    props.api.gridApi.addGridData([values]);
-    setValues(emptyDataItem);
-  };
-
-  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <h3>Add data item</h3>
-      <label className="customSettingsPanel-label">
-        Make
-        <input onChange={handleChange} value={make} name="make" type="text" />
-      </label>
-      <label className="customSettingsPanel-label">
-        Model
-        <input onChange={handleChange} value={model} name="model" type="text" />
-      </label>
-      <label className="customSettingsPanel-label">
-        Price
-        <input onChange={handleChange} value={price} name="price" type="number" />
-      </label>
-      <label className="customSettingsPanel-label">
-        Date manufactured
-        <input onChange={handleChange} value={date} name="date" type="date" />
-      </label>
-      <button type="submit">Add New</button>
-    </form>
   );
 };
 
