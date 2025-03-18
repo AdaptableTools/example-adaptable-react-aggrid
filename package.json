@@ -10,9 +10,7 @@
   },
   "dependencies": {
     "@adaptabletools/adaptable-react-aggrid": "20.0.0-canary.20",
-    "ag-grid-angular": "33.0.4",
     "ag-grid-react": "33.0.4",
-    "ag-grid-vue3": "^33.0.4",
     "ag-grid-enterprise": "33.0.4",
     "ag-charts-enterprise": "11.0.4",
     "react": "^19.0.0",
