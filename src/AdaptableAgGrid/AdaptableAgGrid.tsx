@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useMemo } from 'react';
-import { GridOptions } from '@ag-grid-community/core';
-import { LicenseManager } from '@ag-grid-enterprise/core';
+import { LicenseManager, GridOptions } from 'ag-grid-enterprise';
 import {
   Adaptable,
   AdaptableApi,
@@ -30,6 +29,7 @@ export const AdaptableAgGrid = () => {
       defaultColDef,
       columnDefs,
       rowData,
+      theme: 'legacy',
       sideBar: true,
       statusBar: {
         statusPanels: [
@@ -192,7 +192,7 @@ export const AdaptableAgGrid = () => {
               _button: AdaptableButton<ToolPanelButtonContext>,
               context: ToolPanelButtonContext
             ) => {
-              context.adaptableApi.gridFilterApi.openUIEditorForGridFilter(
+              context.adaptableApi.filterApi.gridFilterApi.openUIEditorForGridFilter(
                 'CONTAINS([language],"type")'
               );
             },
@@ -244,7 +244,7 @@ export const AdaptableAgGrid = () => {
           Layouts: [
             {
               Name: 'Basic',
-              Columns: [
+              TableColumns: [
                 'name',
                 'language',
                 'github_stars',
@@ -264,7 +264,7 @@ export const AdaptableAgGrid = () => {
             },
             {
               Name: 'Sorted',
-              Columns: [
+              TableColumns: [
                 'name',
                 'language',
                 'github_stars',
@@ -287,7 +287,7 @@ export const AdaptableAgGrid = () => {
             },
             {
               Name: 'Row Grouped',
-              Columns: [
+              TableColumns: [
                 'name',
                 'github_stars',
                 'open_issues_count',
@@ -301,10 +301,8 @@ export const AdaptableAgGrid = () => {
             },
             {
               Name: 'Pivot',
-              Columns: [],
               PivotColumns: ['language'],
-              RowGroupedColumns: ['license'],
-              EnablePivot: true,
+              PivotGroupedColumns: ['license'],
               AggregationColumns: {
                 github_stars: 'sum',
               },

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactFrameworkComponent } from '@adaptabletools/adaptable-react-aggrid';
 
-export const CustomSettingsPanel: ReactFrameworkComponent = ({ adaptableApi }) => {
+export const CustomSettingsPanel: ReactFrameworkComponent = () => {
   return (
     <div>
       <h1>Custom Settings</h1>
