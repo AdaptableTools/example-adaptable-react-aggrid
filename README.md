@@ -127,10 +127,6 @@ We can make a Trial Licence available for a short period of time to allow you to
 
 Please contact [`sales@adaptabletools.com`](mailto:sales@adaptabletools.com) or read the [Licence Documentation](https://www.adaptabletools.com/buy/buying-adaptable-licensing) for more information.
 
-## Demo
-
-To see AdapTable React in action visit [Adaptable Documentation](https://www.adaptabletools.com/docs) which contains a large number of small demos each showing a different feature, function or option in AdapTable React (using dummy data sets).
-
 ## Help
 
 Developers can learn how to access AdapTable React programmatically at [AdapTable Documentation](https://www.adaptabletools.com/docs).
