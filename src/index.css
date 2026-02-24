@@ -1,7 +1,4 @@
-@import 'ag-grid-enterprise/styles/ag-grid.css';
-@import 'ag-grid-enterprise/styles/ag-theme-alpine.css';
-@import '@adaptabletools/adaptable-react-aggrid/base.css';
-@import '@adaptabletools/adaptable-react-aggrid/themes/light.css';
+@import '@adaptabletools/adaptable-react-aggrid/index.css';
 @import '@adaptabletools/adaptable-react-aggrid/themes/dark.css';
 
 :root {

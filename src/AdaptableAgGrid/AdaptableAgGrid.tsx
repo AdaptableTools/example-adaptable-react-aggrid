@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMemo } from 'react';
-import { LicenseManager, GridOptions } from 'ag-grid-enterprise';
+import { LicenseManager, GridOptions, themeQuartz } from 'ag-grid-enterprise';
 import {
   Adaptable,
   AdaptableApi,
@@ -29,7 +29,7 @@ export const AdaptableAgGrid = () => {
       defaultColDef,
       columnDefs,
       rowData,
-      theme: 'legacy',
+      theme: themeQuartz,
       sideBar: true,
       statusBar: {
         statusPanels: [
@@ -44,7 +44,7 @@ export const AdaptableAgGrid = () => {
       },
 
       suppressMenuHide: true,
-      enableRangeSelection: true,
+      cellSelection: true,
       enableCharts: true,
     }),
     []
@@ -314,17 +314,68 @@ export const AdaptableAgGrid = () => {
     []
   );
 
-  const adaptableApiRef = React.useRef<AdaptableApi>();
+  const adaptableApiRef = React.useRef<AdaptableApi>(null);
 
   const count = useSelector(counterSelector);
   const dispatch = useDispatch();
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-      <div style={{ marginBottom: 20 }}>
-        <button onClick={() => dispatch({ type: 'counter/incremented' })}>increment</button>
-        <button onClick={() => dispatch({ type: 'counter/decremented' })}>decrement</button>
-        <b style={{ marginLeft: 10 }}>{count}</b>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 10,
+          padding: '12px 16px',
+          background: '#f5f6fa',
+          borderBottom: '1px solid #e0e0e0',
+        }}
+      >
+        <button
+          style={{
+            padding: '6px 16px',
+            background: '#3b82f6',
+            color: '#fff',
+            border: 'none',
+            borderRadius: 6,
+            fontSize: 14,
+            fontWeight: 500,
+            cursor: 'pointer',
+          }}
+          onClick={() => dispatch({ type: 'counter/incremented' })}
+        >
+          + Increment
+        </button>
+        <button
+          style={{
+            padding: '6px 16px',
+            background: '#ef4444',
+            color: '#fff',
+            border: 'none',
+            borderRadius: 6,
+            fontSize: 14,
+            fontWeight: 500,
+            cursor: 'pointer',
+          }}
+          onClick={() => dispatch({ type: 'counter/decremented' })}
+        >
+          − Decrement
+        </button>
+        <span
+          style={{
+            marginLeft: 4,
+            padding: '4px 14px',
+            background: '#fff',
+            border: '1px solid #d1d5db',
+            borderRadius: 6,
+            fontWeight: 600,
+            fontSize: 16,
+            minWidth: 40,
+            textAlign: 'center',
+          }}
+        >
+          {count}
+        </span>
       </div>
       <Adaptable.Provider
         gridOptions={gridOptions}
@@ -337,7 +388,7 @@ export const AdaptableAgGrid = () => {
       >
         <div style={{ display: 'flex', flexFlow: 'column', height: '100vh' }}>
           <Adaptable.UI style={{ flex: 'none' }} />
-          <Adaptable.AgGridReact className="ag-theme-alpine" />
+          <Adaptable.AgGridReact />
         </div>
       </Adaptable.Provider>
     </div>
