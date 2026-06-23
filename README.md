@@ -4,7 +4,7 @@ This is a fairly basic example of how to get started with AdapTable React.
 
 AdapTable React is the React Framework version of AdapTable - the market-leading, low code AG Grid extension.
 
-For full information on how to use AdapTable React see the [AdapTable Documentation](https://www.adaptabletools.com/docs/react-overview).
+For full information on how to use AdapTable React see the [AdapTable Documentation](https://dev.adaptabletools.com/docs/react-overview).
 
 > For an absolute barebones example see the [Adaptable React Support Template](https://github.com/AdaptableTools/support-template-adaptable-react-aggrid) 
 
@@ -13,14 +13,14 @@ For full information on how to use AdapTable React see the [AdapTable Documentat
 The demo is built using these key packages:
 
 - [React](https://github.com/facebook/react) version 19.0
-- [AdapTable](https://www.adaptabletools.com) version 22
+- [AdapTable](https://www.adaptabletools.com) version 23
 - [AG Grid](https://www.ag-grid.com) version 35.0
 
 ## AdapTable React Custom Components
 
-The main benefit of using AdapTable React is that it allows you to supply [custom components](https://www.adaptabletools.com/docs/react-custom-components) in AdapTable in a React-friendly way.
+The main benefit of using AdapTable React is that it allows you to supply [custom components](https://dev.adaptabletools.com/docs/ui-tutorial-building-custom-components?framework=react) in AdapTable in a React-friendly way.
 
-> For full information on how to install and use AdapTable React see the [AdapTable Documentation](https://www.adaptabletools.com/docs/react-overview).
+> For full information on how to install and use AdapTable React see the [AdapTable Documentation](https://dev.adaptabletools.com/docs/react-installation).
 
 This demo showcases 3 React-specific features of AdapTable:
 
@@ -46,7 +46,7 @@ const adaptableOptions: AdaptableOptions = {
 
 ### Tool Panel
 
-The demo illustrates how to pass custom React components to the [Tool Panel](https://www.adaptabletools.com/docs/ui-tool-panel):
+The demo illustrates how to pass custom React components to the [Tool Panel]https://www.adaptabletools.com/docs/ui-tool-panel):
 
 ```tsx
 const adaptableOptions: AdaptableOptions = {
@@ -103,7 +103,7 @@ const adaptableOptions: AdaptableOptions = {
 }
 ```
 
-> For more information on how to use React Components in AdapTable see the [AdapTable Documentation](https://www.adaptabletools.com/docs/react-custom-components).
+> For more information on how to use React Components in AdapTable see the [AdapTable Documentation](https://dev.adaptabletools.com/docs/ui-tutorial-building-custom-components?framework=react).
 
 ### Installation
 
